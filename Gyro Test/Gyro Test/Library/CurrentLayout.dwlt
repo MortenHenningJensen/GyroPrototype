@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 613, y: 492}
+  m_MinSize: {x: 613, y: 471}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 23
+  controlID: 73
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1513
     height: 947
-  m_MinSize: {x: 336, y: 492}
+  m_MinSize: {x: 336, y: 471}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 24
+  controlID: 74
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 1513
     height: 446
-  m_MinSize: {x: 306, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 302, y: 200}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
   controlID: 25
 --- !u!114 &8
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 98
+  controlID: 75
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -303,8 +303,8 @@ MonoBehaviour:
     y: 0
     width: 407
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.31507558, y: 0.61944693, z: -0.29832554, w: -0.6542283}
     speed: 2
-    m_Value: {x: -0.3150756, y: 0.619447, z: -0.29832557, w: -0.6542284}
+    m_Value: {x: -0.31507558, y: 0.61944693, z: -0.29832554, w: -0.6542284}
   m_Size:
     m_Target: 28.018404
     speed: 2
@@ -591,23 +591,23 @@ MonoBehaviour:
     height: 425
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 18fbffffe0fbffff00000000
+    m_SelectedIDs: 68250000
+    m_LastClickedID: 9576
+    m_ExpandedIDs: e0fbffff00000000682500007c250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Cube (5)
-      m_OriginalName: Cube (5)
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -9568
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: F:\Unity Projekter\Gyro Test\Gyro Test
+  m_LastProjectPath: F:\GYRO\Gyro Test\Gyro Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 2875fcff343800002c99fcffb625fcffeca2ffff92000000fe1a00002685feff8a0000008a52fcffde60feff3c78fbfff8d1ddff5893ddffba0000003a0000001e7defffca00000058f5eeff5067fbff3caffbff80c9fdffea0000003479f7ff92daf6ff9878faff10010000180100002a1c0000da8cfeff1601000040000000881b0000aa86feffa6000000ae5a00009c5e0000e0c9f8ff560000003c000000bc17000026000000500000008200000028000000da38feff1c6301005007000054070000dc4bffff360900003a090000681d0000f81c00002e1c0000341c00007a040000421d0000b01d00009c1c0000982300006ca2ffff9a070000f0060000fa070000ae05000010270000b02600002e2a00005e1d0000c0200000ae3d0000042900001e2900005e2900000672ffffd4090000ee0900001e0a0000fc090000d20a0000741e0000dc230000000000005c220000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
