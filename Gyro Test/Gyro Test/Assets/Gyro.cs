@@ -6,19 +6,22 @@ public enum typetorotate { level, ball }
 
 public class Gyro : MonoBehaviour
 {
-
-    float speed;
+    [Header("Components")]
     public Rigidbody rb;
-    public typetorotate type;
-    public Transform mytransform;
+    [Space(5)]
 
+    [Header("Variables")]
+    public typetorotate type;
+    [Space(5)]
+
+    [Header("Phone Variables")]
     public float initialOrientationX;
     public float initialOrientationY;
-
+    [Range(0.1f, 2f)]
     public float smooth = 0.5F;
     public float tiltAngle = 30.0F;
-
-    Quaternion startOffset;
+    [Range(5, 100)]
+    public float speed;
 
     // Use this for initialization
     void Start()
@@ -34,36 +37,17 @@ public class Gyro : MonoBehaviour
             rb = GetComponent<Rigidbody>();
         }
 
-        startOffset = Input.gyro.attitude;
         speed = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (mytransform.rotation.y >= 5 || mytransform.rotation.y <= 5)
-        // {
-        //  ResetGyro();
-        //    Input.gyro.enabled = false;
-        //    var rotationsVector = mytransform.rotation.eulerAngles;
-        //    rotationsVector.y = 0;
-        //    mytransform.rotation = Quaternion.Euler(rotationsVector);
-        //    Input.gyro.enabled = true;
-        // }
-
-        //float xRot = Mathf.Clamp(mytransform.rotation.x, minX, maxX);
-        //float zRot = Mathf.Clamp(mytransform.rotation.z, minY, maxY);
-        //float yRot = Mathf.Clamp(mytransform.rotation.y, 0, 0);
-
-        //mytransform.rotation = new Quaternion(xRot, yRot, zRot, 0);
-        //   if (mytransform.rotation.y > 0.0003f)
-        // {
-        // ResetGyro();
-        //  }
     }
 
     void FixedUpdate()
     {
+        //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
         initialOrientationX = -Input.gyro.rotationRateUnbiased.x * tiltAngle;
         initialOrientationY = -Input.gyro.rotationRateUnbiased.y * tiltAngle;
 
@@ -73,18 +57,14 @@ public class Gyro : MonoBehaviour
                 rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
                 break;
             case typetorotate.level:
-                //mytransform.Rotate(-Input.gyro.gravity.x, 0, -Input.gyro.gravity.y);
+                //Rotates the platform according to the gyroscope in the phone
+                transform.Rotate(initialOrientationX / tiltAngle, 0, initialOrientationY / tiltAngle);
+
+                //This will reset the planes position, so the Y axis is straight (0), does add some "drag" to the game, either make this more smooth, or just use this somehow for movement
                 Quaternion target = Quaternion.Euler(initialOrientationX, 0, initialOrientationY);
-                mytransform.rotation = Quaternion.Slerp(mytransform.rotation, target, Time.deltaTime * smooth);
-                //mytransform.Rotate(initialOrientationX, 0, initialOrientationY);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
                 break;
         }
 
-    }
-
-    void ResetGyro()
-    {
-        Quaternion test = new Quaternion(mytransform.eulerAngles.x, 0, mytransform.eulerAngles.z, 0);
-        mytransform.rotation = test;
     }
 }
