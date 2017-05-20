@@ -35,9 +35,14 @@ public class Gyro : MonoBehaviour
         if (GetComponent<Rigidbody>() != null)
         {
             rb = GetComponent<Rigidbody>();
+            type = typetorotate.ball;
+            speed = 10;
+        }
+        else
+        {
+            type = typetorotate.level;
         }
 
-        speed = 10;
     }
 
     // Update is called once per frame
@@ -61,7 +66,7 @@ public class Gyro : MonoBehaviour
                 transform.Rotate(initialOrientationX / tiltAngle, 0, initialOrientationY / tiltAngle);
 
                 //This will reset the planes position, so the Y axis is straight (0), does add some "drag" to the game, either make this more smooth, or just use this somehow for movement
-                Quaternion target = Quaternion.Euler(initialOrientationX, 0, initialOrientationY);
+                Quaternion target = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.y);
                 transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
                 break;
         }
