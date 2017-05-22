@@ -26,7 +26,7 @@ public class Gyro : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Screen.orientation = ScreenOrientation.LandscapeRight;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         if (!Input.gyro.enabled)
         {
