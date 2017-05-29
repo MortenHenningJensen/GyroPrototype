@@ -150,7 +150,7 @@ public class Plate : MonoBehaviour {
     public void Start()
     {
         ////plates = new List<Plate>();
-
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
@@ -172,10 +172,10 @@ public class Plate : MonoBehaviour {
     /// </summary>
     public void SetupPlates(GameObject go)
     {
-        if (go.GetComponent<Plate>().TypeNumb == 0)
-        {
-            go.GetComponent<Plate>().TypeNumb = PlateType.NormalPlate;
-        }
+        //if (go.GetComponent<Plate>().TypeNumb == 0)
+        //{
+        //    go.GetComponent<Plate>().TypeNumb = PlateType.NormalPlate;
+        //}
 
         switch (TypeNumb)
         {
@@ -189,6 +189,10 @@ public class Plate : MonoBehaviour {
                 //Rend.material = CurrentMaterial;
                 _light = false; //Turns all lights off at the start
                 gm.ActPlates.Add(go);
+<<<<<<< HEAD
+=======
+                gm.NumbOfWinPlates++;
+>>>>>>> origin/Plates
                 break;
             case PlateType.GoalPlate:
                 CurrentMaterial = Material4;
@@ -208,26 +212,29 @@ public class Plate : MonoBehaviour {
     /// </summary>
     void ChangeLight()
     {
-        _light = !_light; //Switched the current light to the opposite
-        if (_light)
+        if (!gm.CanEnd)
         {
-            CurrentMaterial = Material3;
-            Rend.material = CurrentMaterial;
-            this._light = true;
-            gm.NumbOfActivatedPlates++;
-        }
-        else if (!_light)
-        {
-            CurrentMaterial = Material2;
-            Rend.material = CurrentMaterial;
-            this._light = false;
-            gm.NumbOfActivatedPlates--;
-        }
+            _light = !_light; //Switched the current light to the opposite
+            if (_light)
+            {
+                CurrentMaterial = Material3;
+                Rend.material = CurrentMaterial;
+                this._light = true;
+                gm.NumbOfActivatedPlates++;
+            }
+            else if (!_light)
+            {
+                CurrentMaterial = Material2;
+                Rend.material = CurrentMaterial;
+                this._light = false;
+                gm.NumbOfActivatedPlates--;
+            }
 
-        //Debug.Log(gm.NumbOfActivatedPlates + " out of " + gm.NumbOfWinPlates);
-        Debug.Log("Plate is now " + _light);
+            //Debug.Log(gm.NumbOfActivatedPlates + " out of " + gm.NumbOfWinPlates);
+            Debug.Log("Plate is now " + _light);
 
-        gm.WinningCondition(); //Checks if we can win...
+            gm.WinningCondition(); //Checks if we can win...
+        }
     }
 
     /// <summary>
@@ -236,6 +243,8 @@ public class Plate : MonoBehaviour {
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
     {
+        Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
+
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
             //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!

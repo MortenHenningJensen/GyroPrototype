@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> allPlates; //Contains every Plate in game
     [SerializeField]
+    private List<GameObject> tempPlates; //Contains every Plate in game
+    [SerializeField]
     private List<GameObject> normPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> actPlates; //Contains all the activationPlates
@@ -121,19 +123,25 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _numbOfActivatedPlates = 0;
+        _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
+        tempPlates = new List<GameObject>();
         actPlates = new List<GameObject>();     //List of all Activation Plates
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
 
+<<<<<<< HEAD
         //if (plates == null)
         //{
         plates = GameObject.FindGameObjectsWithTag("Plate");
         // }
+=======
+        plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
+>>>>>>> origin/Plates
 
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl); //adds every gameobject with Tag "Plate" to this list.
+            allPlates.Add(pl); 
         }
 
         StartGame();
@@ -143,6 +151,7 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
+<<<<<<< HEAD
         //List<GameObject> tmpList = allPlates;
 
         //for (int i = 0; i < plates.Length; i++)
@@ -150,6 +159,8 @@ public class GameManager : MonoBehaviour
         //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
         //}
 
+=======
+>>>>>>> origin/Plates
         foreach (GameObject pl in allPlates)
         {
             pl.GetComponent<Plate>().SetupPlates(pl);
@@ -159,7 +170,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
     }
+=======
+        //WinningCondition();
+	}
+>>>>>>> origin/Plates
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
@@ -175,11 +191,15 @@ public class GameManager : MonoBehaviour
         if (_numbOfActivatedPlates == NumbOfWinPlates)
         {
             _canEnd = true;
+<<<<<<< HEAD
             foreach (GameObject pl in actPlates)
             {
                 pl.GetComponent<BoxCollider>().isTrigger = false;
             }
             foreach (GameObject pl in goalPlate)
+=======
+            foreach(GameObject pl in goalPlate)
+>>>>>>> origin/Plates
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;
