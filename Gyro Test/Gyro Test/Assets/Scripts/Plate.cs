@@ -189,10 +189,7 @@ public class Plate : MonoBehaviour {
                 //Rend.material = CurrentMaterial;
                 _light = false; //Turns all lights off at the start
                 gm.ActPlates.Add(go);
-<<<<<<< HEAD
-=======
                 gm.NumbOfWinPlates++;
->>>>>>> origin/Plates
                 break;
             case PlateType.GoalPlate:
                 CurrentMaterial = Material4;

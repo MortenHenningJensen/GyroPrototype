@@ -130,18 +130,11 @@ public class GameManager : MonoBehaviour
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
 
-<<<<<<< HEAD
-        //if (plates == null)
-        //{
-        plates = GameObject.FindGameObjectsWithTag("Plate");
-        // }
-=======
         plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
->>>>>>> origin/Plates
 
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl); 
+            allPlates.Add(pl);
         }
 
         StartGame();
@@ -151,7 +144,6 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-<<<<<<< HEAD
         //List<GameObject> tmpList = allPlates;
 
         //for (int i = 0; i < plates.Length; i++)
@@ -159,8 +151,6 @@ public class GameManager : MonoBehaviour
         //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
         //}
 
-=======
->>>>>>> origin/Plates
         foreach (GameObject pl in allPlates)
         {
             pl.GetComponent<Plate>().SetupPlates(pl);
@@ -170,12 +160,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
+
     }
-=======
-        //WinningCondition();
-	}
->>>>>>> origin/Plates
+
+    //WinningCondition();
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
@@ -191,15 +179,13 @@ public class GameManager : MonoBehaviour
         if (_numbOfActivatedPlates == NumbOfWinPlates)
         {
             _canEnd = true;
-<<<<<<< HEAD
+
             foreach (GameObject pl in actPlates)
             {
                 pl.GetComponent<BoxCollider>().isTrigger = false;
             }
+
             foreach (GameObject pl in goalPlate)
-=======
-            foreach(GameObject pl in goalPlate)
->>>>>>> origin/Plates
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;
