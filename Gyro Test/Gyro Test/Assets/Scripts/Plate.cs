@@ -154,6 +154,8 @@ public class Plate : MonoBehaviour {
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -186,15 +188,16 @@ public class Plate : MonoBehaviour {
                 CurrentMaterial = Material2;
                 //Rend.material = CurrentMaterial;
                 _light = false; //Turns all lights off at the start
-                gm.AllPlates.Add(go);
+                gm.ActPlates.Add(go);
                 break;
             case PlateType.GoalPlate:
                 CurrentMaterial = Material4;
                 //Rend.material = CurrentMaterial;
                 gm.CanEnd = false; //Sets the goal to false, so you can't end right away
-                gm.AllPlates.Add(go);
+                gm.GoalPlate.Add(go);
                 break;
             default:
+                Debug.Log("ERROR");
                 break;
         }
         Rend.material = CurrentMaterial;
@@ -231,7 +234,7 @@ public class Plate : MonoBehaviour {
     /// When the ball enters an ActivationPlate
     /// </summary>
     /// <param name="ballCol">The ball collider</param>
-    void OntriggerEnter(Collider ballCol)
+    void OnTriggerEnter(Collider ballCol)
     {
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {

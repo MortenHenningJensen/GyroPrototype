@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     private Plate p;
 
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         _numbOfActivatedPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
@@ -125,10 +126,11 @@ public class GameManager : MonoBehaviour {
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
 
-        if (plates == null)
-        {
-            plates = GameObject.FindGameObjectsWithTag("Plate");
-        }
+        //if (plates == null)
+        //{
+        plates = GameObject.FindGameObjectsWithTag("Plate");
+        // }
+
         foreach (GameObject pl in plates)
         {
             allPlates.Add(pl); //adds every gameobject with Tag "Plate" to this list.
@@ -141,17 +143,23 @@ public class GameManager : MonoBehaviour {
 
     void StartGame()
     {
-        foreach(GameObject pl in allPlates)
-        {
-            p.SetupPlates(pl);
-        }
+        //List<GameObject> tmpList = allPlates;
 
+        //for (int i = 0; i < plates.Length; i++)
+        //{
+        //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
+        //}
+
+        foreach (GameObject pl in allPlates)
+        {
+            pl.GetComponent<Plate>().SetupPlates(pl);
+        }
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-	}
+    }
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
@@ -171,7 +179,7 @@ public class GameManager : MonoBehaviour {
             {
                 pl.GetComponent<BoxCollider>().isTrigger = false;
             }
-            foreach(GameObject pl in goalPlate)
+            foreach (GameObject pl in goalPlate)
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;

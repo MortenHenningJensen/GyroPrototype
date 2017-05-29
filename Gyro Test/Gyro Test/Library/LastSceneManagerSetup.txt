@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/test - Copy.unity
-=======
-<<<<<<< HEAD
 - path: Assets/Scenes/Thomas Test.unity
-=======
-- path: Assets/Scenes/test.unity
->>>>>>> origin/Laisen
->>>>>>> origin/Plates
   isLoaded: 1
   isActive: 1
