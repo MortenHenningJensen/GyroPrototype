@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> allPlates; //Contains every Plate in game
     [SerializeField]
+    private List<GameObject> tempPlates; //Contains every Plate in game
+    [SerializeField]
     private List<GameObject> normPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> actPlates; //Contains all the activationPlates
@@ -120,18 +122,18 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
         _numbOfActivatedPlates = 0;
+        _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
+        tempPlates = new List<GameObject>();
         actPlates = new List<GameObject>();     //List of all Activation Plates
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
 
-        if (plates == null)
-        {
-            plates = GameObject.FindGameObjectsWithTag("Plate");
-        }
+        plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
+
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl); //adds every gameobject with Tag "Plate" to this list.
+            allPlates.Add(pl); 
         }
 
         StartGame();
@@ -141,16 +143,16 @@ public class GameManager : MonoBehaviour {
 
     void StartGame()
     {
-        foreach(GameObject pl in allPlates)
+        foreach (GameObject pl in allPlates)
         {
-            p.SetupPlates(pl);
+            pl.GetComponent<Plate>().SetupPlates(pl);
         }
-
     }
 
     // Update is called once per frame
     void Update ()
     {
+        //WinningCondition();
 	}
 
     /// <summary>
@@ -167,10 +169,6 @@ public class GameManager : MonoBehaviour {
         if (_numbOfActivatedPlates == NumbOfWinPlates)
         {
             _canEnd = true;
-            foreach (GameObject pl in actPlates)
-            {
-                pl.GetComponent<BoxCollider>().isTrigger = false;
-            }
             foreach(GameObject pl in goalPlate)
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
