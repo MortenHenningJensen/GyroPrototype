@@ -211,20 +211,20 @@ public class Plate : MonoBehaviour {
             CurrentMaterial = Material3;
             Rend.material = CurrentMaterial;
             this._light = true;
-            //gm.NumbOfActivatedPlates++;
+            gm.NumbOfActivatedPlates++;
         }
         else if (!_light)
         {
             CurrentMaterial = Material2;
             Rend.material = CurrentMaterial;
             this._light = false;
-            //gm.NumbOfActivatedPlates--;
+            gm.NumbOfActivatedPlates--;
         }
 
         //Debug.Log(gm.NumbOfActivatedPlates + " out of " + gm.NumbOfWinPlates);
         Debug.Log("Plate is now " + _light);
 
-        //gm.WinningCondition(); //Checks if we can win...
+        gm.WinningCondition(); //Checks if we can win...
     }
 
     /// <summary>
