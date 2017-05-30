@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,6 +43,7 @@ MonoBehaviour:
     width: 1920
     height: 947
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
@@ -53,6 +54,12 @@ MonoBehaviour:
   vertical: 0
   controlID: 112
 >>>>>>> origin/Plates
+=======
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
+  vertical: 0
+  controlID: 47
+>>>>>>> origin/Morten
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,11 +246,15 @@ MonoBehaviour:
 =======
     width: 1531
     height: 947
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 71
 >>>>>>> origin/Plates
+=======
+  controlID: 48
+>>>>>>> origin/Morten
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,14 +279,18 @@ MonoBehaviour:
     width: 1531
 >>>>>>> origin/Plates
     height: 573
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
   controlID: 49
 =======
   controlID: 11
 >>>>>>> origin/Plates
+=======
+  controlID: 49
+>>>>>>> origin/Morten
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -303,14 +318,21 @@ MonoBehaviour:
     y: 0
     width: 1152
     height: 573
+<<<<<<< HEAD
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
 >>>>>>> origin/Plates
+=======
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 16}
+>>>>>>> origin/Morten
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 12}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_Selected: 0
   m_LastSelected: 1
@@ -318,6 +340,10 @@ MonoBehaviour:
   m_Selected: 1
   m_LastSelected: 0
 >>>>>>> origin/Plates
+=======
+  m_Selected: 0
+  m_LastSelected: 1
+>>>>>>> origin/Morten
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -385,16 +411,17 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Bibliotek\Dokumenter\GyroPrototype\Gyro Test\Gyro Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 90260000
     m_LastClickedID: 9872
@@ -404,6 +431,11 @@ MonoBehaviour:
     m_LastClickedID: 9562
     m_ExpandedIDs: 00000000ce24000080250000ffffff7f
 >>>>>>> origin/Plates
+=======
+    m_SelectedIDs: 7c250000
+    m_LastClickedID: 9596
+    m_ExpandedIDs: 00000000ca2400007c250000ffffff7f
+>>>>>>> origin/Morten
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -432,10 +464,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000001a260000aa260000
 =======
     m_ExpandedIDs: 00000000ce24000080250000
 >>>>>>> origin/Plates
+=======
+    m_ExpandedIDs: 00000000ca2400007c250000
+>>>>>>> origin/Morten
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,8 +604,12 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 52f2ffff4af7ffffe2fbffff00000000
 >>>>>>> origin/Plates
+=======
+    m_ExpandedIDs: e0fbffff00000000f8260000
+>>>>>>> origin/Morten
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -629,6 +669,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.46514645, y: 6.5703735, z: -6.751075}
     speed: 2
     m_Value: {x: -0.46514645, y: 6.5703735, z: -6.751075}
@@ -637,6 +678,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
 >>>>>>> origin/Plates
+=======
+    m_Target: {x: -6.0551863, y: 6.4238253, z: 4.41128}
+    speed: 2
+    m_Value: {x: -6.0551863, y: 6.4238253, z: 4.41128}
+>>>>>>> origin/Morten
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -660,6 +706,7 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.42028007, y: -0.014432187, z: 0.0066850204, w: -0.907255}
     speed: 2
     m_Value: {x: -0.42028007, y: -0.014432187, z: 0.0066850204, w: -0.907255}
@@ -669,13 +716,20 @@ MonoBehaviour:
     m_Value: 13.608618
 =======
     m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+=======
+    m_Target: {x: 0.0059399647, y: 0.83514297, z: -0.549927, w: 0.009020445}
+>>>>>>> origin/Morten
     speed: 2
-    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: {x: 0.0059399647, y: 0.83514297, z: -0.549927, w: 0.009020445}
   m_Size:
-    m_Target: 10
+    m_Target: 12.917438
     speed: 2
+<<<<<<< HEAD
     m_Value: 10
 >>>>>>> origin/Plates
+=======
+    m_Value: 12.917438
+>>>>>>> origin/Morten
   m_Ortho:
     m_Target: 0
     speed: 2
