@@ -154,8 +154,6 @@ public class Plate : MonoBehaviour {
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
-
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

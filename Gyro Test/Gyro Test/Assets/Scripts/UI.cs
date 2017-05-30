@@ -2,45 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class UI : MonoBehaviour {
+
+public class UI : MonoBehaviour
+{
 
     int currentLevel = 1;
-    string levelString;
     [SerializeField]
     float timeLeft = 5;
     string timeDisp;
-    int deathCount = 0;
-    string deathAmount;
     bool gameOver;
     public Text _txtTimer;
+    private LevelTracker lt;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         gameOver = false;
-    }   
-    // Update is called once per frame
-    void Update () {
-        timeDisp = timeLeft.ToString();
-        if (gameOver == false)
-        {
-            timeLeft -= Time.deltaTime; 
-        }     
-        if (timeLeft < 1 && gameOver == false)
-        {
-            GameOver();
-        }
-        GameObject.Find("CurrentLevel").GetComponent<Text>().text = levelString;
-        levelString = currentLevel.ToString();
-
-        GameObject.Find("Deaths").GetComponent<Text>().text = deathAmount;
-        deathAmount = deathCount.ToString();
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!lt.gameEnded)
+        {
+            timeDisp = timeLeft.ToString();
+            if (gameOver == false)
+            {
+                timeLeft -= Time.deltaTime;
+            }
+            if (timeLeft < 1 && gameOver == false)
+            {
+                GameOver();
+            }
+
+            GameObject.Find("CurrentLevel").GetComponent<Text>().text = currentLevel.ToString();
+
+            GameObject.Find("Deaths").GetComponent<Text>().text = lt.deathCounter.ToString();
+        }
+    }
+
     void GameOver()
     {
         gameOver = true;
-        deathCount++;       
+        lt.AddDeath();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     void OnGUI()
     {
         int minutes = Mathf.FloorToInt(timeLeft / 60F);
