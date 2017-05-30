@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plate : MonoBehaviour {
+public class Plate : MonoBehaviour
+{
 
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3};
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3 };
 
     private GameManager gm;
 
@@ -150,10 +151,10 @@ public class Plate : MonoBehaviour {
     public void Start()
     {
         ////plates = new List<Plate>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Rend = this.GetComponent<Renderer>();
-        Rend.enabled = true;
-        CurrentMaterial = this.GetComponent<Material>();
+        //gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //Rend = this.GetComponent<Renderer>();
+        //Rend.enabled = true;
+        //CurrentMaterial = this.GetComponent<Material>();
     }
 
     // Update is called once per frame
@@ -170,10 +171,11 @@ public class Plate : MonoBehaviour {
     /// </summary>
     public void SetupPlates(GameObject go)
     {
-        //if (go.GetComponent<Plate>().TypeNumb == 0)
-        //{
-        //    go.GetComponent<Plate>().TypeNumb = PlateType.NormalPlate;
-        //}
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Rend = this.GetComponent<Renderer>();
+        Rend.enabled = true;
+        CurrentMaterial = this.GetComponent<Material>();
 
         switch (TypeNumb)
         {
@@ -196,10 +198,10 @@ public class Plate : MonoBehaviour {
                 gm.GoalPlate.Add(go);
                 break;
             default:
-                Debug.Log("ERROR");
                 break;
         }
         Rend.material = CurrentMaterial;
+
     }
 
     /// <summary>
@@ -243,7 +245,7 @@ public class Plate : MonoBehaviour {
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
             //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!
-            if (this.TypeNumb == PlateType.ActivationPlate && 
+            if (this.TypeNumb == PlateType.ActivationPlate &&
                 this.GetComponent<BoxCollider>().isTrigger == true)
             {
                 ChangeLight();
