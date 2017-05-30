@@ -154,6 +154,8 @@ public class Plate : MonoBehaviour {
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -196,6 +198,7 @@ public class Plate : MonoBehaviour {
                 gm.GoalPlate.Add(go);
                 break;
             default:
+                Debug.Log("ERROR");
                 break;
         }
         Rend.material = CurrentMaterial;
