@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> allPlates; //Contains every Plate in game
     [SerializeField]
-    private List<GameObject> tempPlates; //Contains every Plate in game
-    [SerializeField]
     private List<GameObject> normPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> actPlates; //Contains all the activationPlates
@@ -124,7 +122,6 @@ public class GameManager : MonoBehaviour {
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
-        tempPlates = new List<GameObject>();
         actPlates = new List<GameObject>();     //List of all Activation Plates
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
@@ -152,23 +149,19 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        //WinningCondition();
+        
 	}
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
     /// the number of plates required to win..
-    /// Disables the triggers on the activationPlates, so you don't accidently 
-    /// ruin the win-condition..
     /// Changes the material on the StartPlate, to EndPlate..
     /// </summary>
     public void WinningCondition()
     {
-        /*Hele denne metode skal måske flyttes, så det ikke er hver plate der har denne metode,
-        men at det er en del af spillets logik istedet.. */
-        if (_numbOfActivatedPlates == NumbOfWinPlates)
+        if (NumbOfActivatedPlates == NumbOfWinPlates)
         {
-            _canEnd = true;
+            CanEnd = true;
             foreach(GameObject pl in goalPlate)
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
@@ -177,5 +170,12 @@ public class GameManager : MonoBehaviour {
 
             Debug.Log("You can now finish the game!");
         }
+    }
+
+    public void EndStatus()
+    {
+        //1. Load animation for switching levels
+        //2. Pop-up with status screen (Time, Re-tries)
+        //3. Buttons, "Main Menu", "Share Result", "Re-try","Next Level"
     }
 }

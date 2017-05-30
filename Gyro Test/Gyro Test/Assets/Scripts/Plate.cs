@@ -11,18 +11,6 @@ public class Plate : MonoBehaviour {
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
 
-    //[SerializeField]
-    //private int _numbOfWinPlates; //Test
-    //[SerializeField]
-    //private int _numbOfActivatedPlates; //Test
-
-    ////[SerializeField]
-    ////private List<Plate> plates;
-    ////[SerializeField]
-    ////private List<Plate> actPlates;
-    ////[SerializeField]
-    //private List<Plate> goalPlate;
-
     [SerializeField]
     private bool _light; //Plate_Activation
 
@@ -159,10 +147,10 @@ public class Plate : MonoBehaviour {
     // Update is called once per frame
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && this.TypeNumb == PlateType.ActivationPlate)
-        {
-            ChangeLight();
-        }
+        //if (Input.GetKeyDown(KeyCode.A) && this.TypeNumb == PlateType.ActivationPlate)
+        //{
+        //    ChangeLight();
+        //}
     }
 
     /// <summary>
@@ -170,38 +158,31 @@ public class Plate : MonoBehaviour {
     /// </summary>
     public void SetupPlates(GameObject go)
     {
-        //if (go.GetComponent<Plate>().TypeNumb == 0)
-        //{
-        //    go.GetComponent<Plate>().TypeNumb = PlateType.NormalPlate;
-        //}
-
         switch (TypeNumb)
         {
             case PlateType.NormalPlate:
-                CurrentMaterial = Material1;
-                //Rend.material = CurrentMaterial;
-                gm.NormPlates.Add(go);
+                CurrentMaterial = Material1; //Changes the Current-material to a specific material..
+                gm.NormPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.ActivationPlate:
-                CurrentMaterial = Material2;
-                //Rend.material = CurrentMaterial;
-                _light = false; //Turns all lights off at the start
-                gm.ActPlates.Add(go);
+                CurrentMaterial = Material2; //Changes the Current-material to a specific material
+                _light = false; //Turns all lights off at the start..
+                gm.ActPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 gm.NumbOfWinPlates++;
                 break;
             case PlateType.GoalPlate:
-                CurrentMaterial = Material4;
-                //Rend.material = CurrentMaterial;
-                gm.CanEnd = false; //Sets the goal to false, so you can't end right away
-                gm.GoalPlate.Add(go);
+                CurrentMaterial = Material4; //Changes the Current-material to a specific material
+                gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
+                gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             default:
                 break;
         }
-        Rend.material = CurrentMaterial;
+        Rend.material = CurrentMaterial; //Runs the render in the GameObject (Plate), so it gets the new material..
     }
 
     /// <summary>
+    /// Can only Change the Light, if all the lights have not been activated..
     /// Changes the light "On" and "Off", and the color of the Plate...
     /// </summary>
     void ChangeLight()
@@ -224,7 +205,6 @@ public class Plate : MonoBehaviour {
                 gm.NumbOfActivatedPlates--;
             }
 
-            //Debug.Log(gm.NumbOfActivatedPlates + " out of " + gm.NumbOfWinPlates);
             Debug.Log("Plate is now " + _light);
 
             gm.WinningCondition(); //Checks if we can win...
@@ -232,7 +212,8 @@ public class Plate : MonoBehaviour {
     }
 
     /// <summary>
-    /// When the ball enters an ActivationPlate
+    /// When the ball enters an ActivationPlate, it runs the ChangeLight()..
+    /// When the ball enters the GoalPlate AND canEnd-bool is true, it runs gm.EndStatus()..
     /// </summary>
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
@@ -242,10 +223,14 @@ public class Plate : MonoBehaviour {
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
             //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!
-            if (this.TypeNumb == PlateType.ActivationPlate && 
-                this.GetComponent<BoxCollider>().isTrigger == true)
+            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
             {
                 ChangeLight();
+            }
+
+            if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
+            {
+                gm.EndStatus();
             }
         }
     }
