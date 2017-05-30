@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     private Plate p;
 
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
@@ -130,7 +131,7 @@ public class GameManager : MonoBehaviour {
 
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl); 
+            allPlates.Add(pl);
         }
 
         StartGame();
@@ -140,6 +141,13 @@ public class GameManager : MonoBehaviour {
 
     void StartGame()
     {
+        //List<GameObject> tmpList = allPlates;
+
+        //for (int i = 0; i < plates.Length; i++)
+        //{
+        //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
+        //}
+
         foreach (GameObject pl in allPlates)
         {
             pl.GetComponent<Plate>().SetupPlates(pl);
@@ -147,22 +155,34 @@ public class GameManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-        
-	}
+
+    }
+
+    //WinningCondition();
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
     /// the number of plates required to win..
+    /// Disables the triggers on the activationPlates, so you don't accidently 
+    /// ruin the win-condition..
     /// Changes the material on the StartPlate, to EndPlate..
     /// </summary>
     public void WinningCondition()
     {
-        if (NumbOfActivatedPlates == NumbOfWinPlates)
+        /*Hele denne metode skal måske flyttes, så det ikke er hver plate der har denne metode,
+        men at det er en del af spillets logik istedet.. */
+        if (_numbOfActivatedPlates == NumbOfWinPlates)
         {
-            CanEnd = true;
-            foreach(GameObject pl in goalPlate)
+            _canEnd = true;
+
+            foreach (GameObject pl in actPlates)
+            {
+                pl.GetComponent<BoxCollider>().isTrigger = false;
+            }
+
+            foreach (GameObject pl in goalPlate)
             {
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;

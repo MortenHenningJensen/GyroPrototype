@@ -142,6 +142,8 @@ public class Plate : MonoBehaviour {
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -176,6 +178,7 @@ public class Plate : MonoBehaviour {
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             default:
+                Debug.Log("ERROR");
                 break;
         }
         Rend.material = CurrentMaterial; //Runs the render in the GameObject (Plate), so it gets the new material..
