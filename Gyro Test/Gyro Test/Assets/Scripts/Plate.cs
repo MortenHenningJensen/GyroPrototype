@@ -2,27 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plate : MonoBehaviour
-{
+public class Plate : MonoBehaviour {
 
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3 };
+    #region Fields
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3};
 
     private GameManager gm;
 
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
-
-    //[SerializeField]
-    //private int _numbOfWinPlates; //Test
-    //[SerializeField]
-    //private int _numbOfActivatedPlates; //Test
-
-    ////[SerializeField]
-    ////private List<Plate> plates;
-    ////[SerializeField]
-    ////private List<Plate> actPlates;
-    ////[SerializeField]
-    //private List<Plate> goalPlate;
 
     [SerializeField]
     private bool _light; //Plate_Activation
@@ -31,7 +19,6 @@ public class Plate : MonoBehaviour
 
     [SerializeField]
     private Material _currentMaterial;
-
     [SerializeField]
     private Material _material1;
     [SerializeField]
@@ -43,6 +30,9 @@ public class Plate : MonoBehaviour
     [SerializeField]
     private Material _material5;
 
+    #endregion
+
+    #region Get/Sets
     public Material CurrentMaterial
     {
         get
@@ -146,24 +136,25 @@ public class Plate : MonoBehaviour
             _rend = value;
         }
     }
+    
+    #endregion
 
     // Use this for initialization
     public void Start()
     {
-        ////plates = new List<Plate>();
-        //gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //Rend = this.GetComponent<Renderer>();
-        //Rend.enabled = true;
-        //CurrentMaterial = this.GetComponent<Material>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
+        Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
+        Rend.enabled = true; //Enables the rendere, so we can change it's material..
+        CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && this.TypeNumb == PlateType.ActivationPlate)
-        {
-            ChangeLight();
-        }
+        //if (Input.GetKeyDown(KeyCode.A) && this.TypeNumb == PlateType.ActivationPlate)
+        //{
+        //    ChangeLight();
+        //}
     }
 
     /// <summary>
@@ -171,63 +162,67 @@ public class Plate : MonoBehaviour
     /// </summary>
     public void SetupPlates(GameObject go)
     {
+<<<<<<< HEAD
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         Rend = this.GetComponent<Renderer>();
         Rend.enabled = true;
         CurrentMaterial = this.GetComponent<Material>();
 
+=======
+>>>>>>> origin/Plates
         switch (TypeNumb)
         {
             case PlateType.NormalPlate:
-                CurrentMaterial = Material1;
-                //Rend.material = CurrentMaterial;
-                gm.NormPlates.Add(go);
+                CurrentMaterial = Material1; //Changes the Current-material to a specific material..
+                gm.NormPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.ActivationPlate:
-                CurrentMaterial = Material2;
-                //Rend.material = CurrentMaterial;
-                _light = false; //Turns all lights off at the start
-                gm.ActPlates.Add(go);
+                CurrentMaterial = Material2; //Changes the Current-material to a specific material
+                _light = false; //Turns all lights off at the start..
+                gm.ActPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 gm.NumbOfWinPlates++;
                 break;
             case PlateType.GoalPlate:
-                CurrentMaterial = Material4;
-                //Rend.material = CurrentMaterial;
-                gm.CanEnd = false; //Sets the goal to false, so you can't end right away
-                gm.GoalPlate.Add(go);
+                CurrentMaterial = Material4; //Changes the Current-material to a specific material
+                gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
+                gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             default:
                 break;
         }
+<<<<<<< HEAD
         Rend.material = CurrentMaterial;
 
+=======
+        Rend.material = CurrentMaterial; //Runs the render in the GameObject (Plate), so it gets the new material..
+>>>>>>> origin/Plates
     }
 
     /// <summary>
+    /// Can only Change the Light, if all the lights have not been activated..
     /// Changes the light "On" and "Off", and the color of the Plate...
     /// </summary>
     void ChangeLight()
     {
-        if (!gm.CanEnd)
+        if (!gm.CanEnd) //If the game hasn't ended yet..
         {
             _light = !_light; //Switched the current light to the opposite
             if (_light)
             {
                 CurrentMaterial = Material3;
-                Rend.material = CurrentMaterial;
-                this._light = true;
+                this._light = true; //Turns ActivationPlate's Light ON
                 gm.NumbOfActivatedPlates++;
             }
             else if (!_light)
             {
                 CurrentMaterial = Material2;
-                Rend.material = CurrentMaterial;
-                this._light = false;
+                this._light = false; //Turns ActivationPlate's Light OFF
                 gm.NumbOfActivatedPlates--;
             }
 
-            //Debug.Log(gm.NumbOfActivatedPlates + " out of " + gm.NumbOfWinPlates);
+            Rend.material = CurrentMaterial; //Opdates the current Material..
+
             Debug.Log("Plate is now " + _light);
 
             gm.WinningCondition(); //Checks if we can win...
@@ -235,7 +230,8 @@ public class Plate : MonoBehaviour
     }
 
     /// <summary>
-    /// When the ball enters an ActivationPlate
+    /// When the ball enters an ActivationPlate, it runs the ChangeLight()..
+    /// When the ball enters the GoalPlate AND canEnd-bool is true, it runs gm.EndStatus()..
     /// </summary>
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
@@ -244,11 +240,20 @@ public class Plate : MonoBehaviour
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
+<<<<<<< HEAD
             //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!
             if (this.TypeNumb == PlateType.ActivationPlate &&
                 this.GetComponent<BoxCollider>().isTrigger == true)
+=======
+            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
+>>>>>>> origin/Plates
             {
                 ChangeLight();
+            }
+
+            if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
+            {
+                gm.EndStatus();
             }
         }
     }

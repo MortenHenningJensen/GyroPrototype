@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    #region Fields
     private Plate p;
 
     [SerializeField]
@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> allPlates; //Contains every Plate in game
     [SerializeField]
-    private List<GameObject> tempPlates; //Contains every Plate in game
-    [SerializeField]
     private List<GameObject> normPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> actPlates; //Contains all the activationPlates
@@ -27,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private bool _canEnd; //End condition has been achieved
+    #endregion
 
+    #region Get/Sets
     public List<GameObject> AllPlates
     {
         get
@@ -119,13 +119,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     // Use this for initialization
     void Start()
     {
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
-        tempPlates = new List<GameObject>();
         actPlates = new List<GameObject>();     //List of all Activation Plates
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
@@ -134,26 +135,19 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl);
+            allPlates.Add(pl); //Adds every Plate in game to a list..
         }
 
-        StartGame();
+        StartGame(); //Runs the StartGame()..
 
         NumbOfWinPlates = actPlates.Count; //Number of activation plates to win
     }
 
     void StartGame()
     {
-        //List<GameObject> tmpList = allPlates;
-
-        //for (int i = 0; i < plates.Length; i++)
-        //{
-        //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
-        //}
-
         foreach (GameObject pl in allPlates)
         {
-            pl.GetComponent<Plate>().SetupPlates(pl);
+            pl.GetComponent<Plate>().SetupPlates(pl); //Runs SetupPlates in Plate.cs, for every Plate..
         }
     }
 
@@ -162,8 +156,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
-    //WinningCondition();
 
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
@@ -174,24 +166,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void WinningCondition()
     {
-        /*Hele denne metode skal måske flyttes, så det ikke er hver plate der har denne metode,
-        men at det er en del af spillets logik istedet.. */
-        if (_numbOfActivatedPlates == NumbOfWinPlates)
+        if (NumbOfActivatedPlates == NumbOfWinPlates)
         {
-            _canEnd = true;
-
-            foreach (GameObject pl in actPlates)
-            {
-                pl.GetComponent<BoxCollider>().isTrigger = false;
-            }
+            CanEnd = true; //changes the bool to true, so the game can End.. Disables Plate.ChangeLights()..
 
             foreach (GameObject pl in goalPlate)
             {
+                //Change material on the GoalPlate..
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;
             }
 
             Debug.Log("You can now finish the game!");
         }
+    }
+
+    public void EndStatus()
+    {
+        //1. Load animation for switching levels
+        //2. Pop-up with status screen (Time, Re-tries)
+        //3. Buttons, "Main Menu", "Share Result", "Re-try","Next Level"
     }
 }

@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Thomas Test with New.unity
+=======
+- path: Assets/Scenes/Thomas Test.unity
+>>>>>>> origin/Plates
   isLoaded: 1
   isActive: 1
