@@ -141,13 +141,6 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        //List<GameObject> tmpList = allPlates;
-
-        //for (int i = 0; i < plates.Length; i++)
-        //{
-        //    allPlates[i].GetComponent<Plate>().SetupPlates(tmpList[i]);
-        //}
-
         foreach (GameObject pl in allPlates)
         {
             pl.GetComponent<Plate>().SetupPlates(pl);
@@ -160,8 +153,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //WinningCondition();
-
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
     /// the number of plates required to win..
@@ -171,16 +162,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void WinningCondition()
     {
-        /*Hele denne metode skal måske flyttes, så det ikke er hver plate der har denne metode,
-        men at det er en del af spillets logik istedet.. */
-        if (_numbOfActivatedPlates == NumbOfWinPlates)
+        if (NumbOfActivatedPlates == NumbOfWinPlates)
         {
-            _canEnd = true;
-
-            foreach (GameObject pl in actPlates)
-            {
-                pl.GetComponent<BoxCollider>().isTrigger = false;
-            }
+            CanEnd = true;
 
             foreach (GameObject pl in goalPlate)
             {

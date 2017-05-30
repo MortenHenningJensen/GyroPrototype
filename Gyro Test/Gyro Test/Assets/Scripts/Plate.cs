@@ -190,23 +190,23 @@ public class Plate : MonoBehaviour {
     /// </summary>
     void ChangeLight()
     {
-        if (!gm.CanEnd)
+        if (!gm.CanEnd) //If the game hasn't ended yet..
         {
             _light = !_light; //Switched the current light to the opposite
             if (_light)
             {
                 CurrentMaterial = Material3;
-                Rend.material = CurrentMaterial;
-                this._light = true;
+                this._light = true; //Turns ActivationPlate's Light ON
                 gm.NumbOfActivatedPlates++;
             }
             else if (!_light)
             {
                 CurrentMaterial = Material2;
-                Rend.material = CurrentMaterial;
-                this._light = false;
+                this._light = false; //Turns ActivationPlate's Light OFF
                 gm.NumbOfActivatedPlates--;
             }
+
+            Rend.material = CurrentMaterial; //Opdates the current Material..
 
             Debug.Log("Plate is now " + _light);
 
@@ -225,7 +225,6 @@ public class Plate : MonoBehaviour {
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
-            //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!
             if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
             {
                 ChangeLight();
