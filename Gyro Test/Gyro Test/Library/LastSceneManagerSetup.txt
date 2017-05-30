@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Thomas Test with New.unity
+- path: Assets/Scenes/World 1/1-6.unity
   isLoaded: 1
   isActive: 1

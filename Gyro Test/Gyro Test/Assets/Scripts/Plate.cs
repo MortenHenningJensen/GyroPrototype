@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plate : MonoBehaviour {
+public class Plate : MonoBehaviour
+{
 
     #region Fields
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3};
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4 };
 
     private GameManager gm;
 
@@ -29,6 +30,8 @@ public class Plate : MonoBehaviour {
     private Material _material4;
     [SerializeField]
     private Material _material5;
+    [SerializeField]
+    private Material _material6;
 
     #endregion
 
@@ -111,6 +114,19 @@ public class Plate : MonoBehaviour {
         }
     }
 
+    public Material Material6
+    {
+        get
+        {
+            return _material6;
+        }
+
+        set
+        {
+            _material6 = value;
+        }
+    }
+
     public PlateType TypeNumb
     {
         get
@@ -136,7 +152,6 @@ public class Plate : MonoBehaviour {
             _rend = value;
         }
     }
-    
     #endregion
 
     // Use this for initialization
@@ -179,6 +194,10 @@ public class Plate : MonoBehaviour {
                 CurrentMaterial = Material4; //Changes the Current-material to a specific material
                 gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
+                break;
+            case PlateType.HolePlate:
+                CurrentMaterial = Material6;
+                this.GetComponent<BoxCollider>().enabled = false;
                 break;
             default:
                 break;
