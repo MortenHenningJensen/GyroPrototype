@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private bool _canEnd; //End condition has been achieved
+
+    public Canvas gameEnd;
+    public LevelTracker lt;
+
     #endregion
 
     #region Get/Sets
@@ -124,6 +129,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
@@ -183,6 +189,14 @@ public class GameManager : MonoBehaviour
 
     public void EndStatus()
     {
+        gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
+        gameEnd.enabled = true;
+
+        Text endStatusText = GameObject.Find("Game Over").GetComponent<Text>();
+        endStatusText.text = "YOU ROLL";
+
+        lt.gameEnded = true;     
+
         //1. Load animation for switching levels
         //2. Pop-up with status screen (Time, Re-tries)
         //3. Buttons, "Main Menu", "Share Result", "Re-try","Next Level"

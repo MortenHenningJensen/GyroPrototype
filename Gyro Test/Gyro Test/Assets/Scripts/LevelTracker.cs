@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelTracker : MonoBehaviour {
+public class LevelTracker : MonoBehaviour
+{
 
     [SerializeField]
     public int deathCounter;
     private static LevelTracker instanceRef;
-    public Canvas gameEnd;
+    private Canvas gameEnd;
     public bool gameEnded;
-
+    bool findOnce;
 
     void Awake()
     {
@@ -26,8 +27,12 @@ public class LevelTracker : MonoBehaviour {
 
     private void Update()
     {
-        gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
-        gameEnd.enabled = false;
+        if (!findOnce)
+        {
+            gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
+            gameEnd.enabled = false;
+            findOnce = true;
+        }
 
         if (deathCounter >= 3)
         {

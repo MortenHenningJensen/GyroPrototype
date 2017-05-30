@@ -142,10 +142,6 @@ public class Plate : MonoBehaviour {
     // Use this for initialization
     public void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
-        Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
-        Rend.enabled = true; //Enables the rendere, so we can change it's material..
-        CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
     }
 
     // Update is called once per frame
@@ -162,15 +158,11 @@ public class Plate : MonoBehaviour {
     /// </summary>
     public void SetupPlates(GameObject go)
     {
-<<<<<<< HEAD
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
+        Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
+        Rend.enabled = true; //Enables the rendere, so we can change it's material..
+        CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
 
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Rend = this.GetComponent<Renderer>();
-        Rend.enabled = true;
-        CurrentMaterial = this.GetComponent<Material>();
-
-=======
->>>>>>> origin/Plates
         switch (TypeNumb)
         {
             case PlateType.NormalPlate:
@@ -191,12 +183,8 @@ public class Plate : MonoBehaviour {
             default:
                 break;
         }
-<<<<<<< HEAD
-        Rend.material = CurrentMaterial;
 
-=======
         Rend.material = CurrentMaterial; //Runs the render in the GameObject (Plate), so it gets the new material..
->>>>>>> origin/Plates
     }
 
     /// <summary>
@@ -240,13 +228,7 @@ public class Plate : MonoBehaviour {
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
-<<<<<<< HEAD
-            //if (this._typeNumb == Type.ActivationPlate && (TouchInput) <-- Brug den her!
-            if (this.TypeNumb == PlateType.ActivationPlate &&
-                this.GetComponent<BoxCollider>().isTrigger == true)
-=======
             if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
->>>>>>> origin/Plates
             {
                 ChangeLight();
             }
