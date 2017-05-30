@@ -197,7 +197,9 @@ public class Plate : MonoBehaviour
                 break;
             case PlateType.HolePlate:
                 CurrentMaterial = Material6;
-                this.GetComponent<BoxCollider>().enabled = false;
+                BoxCollider col = go.GetComponent<BoxCollider>();
+                col.size = new Vector3(0.25f, 0.25f, 0.25f);
+               // this.GetComponent<BoxCollider>().enabled = false;
                 break;
             default:
                 break;
@@ -255,6 +257,12 @@ public class Plate : MonoBehaviour
             if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
             {
                 gm.EndStatus();
+            }
+
+            if (this.TypeNumb == PlateType.HolePlate)
+            {
+                GameObject go = GameObject.Find("LevelContainer");
+                go.SetActive(false);
             }
         }
     }
