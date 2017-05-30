@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class ResetBox : MonoBehaviour {
 
+    private LevelTracker lt;
+
+    private void Awake()
+    {
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player")
         {
+            lt.AddDeath();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

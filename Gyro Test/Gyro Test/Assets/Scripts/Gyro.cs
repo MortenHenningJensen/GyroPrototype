@@ -30,11 +30,13 @@ public class Gyro : MonoBehaviour
     [Header("PowerUps")]
     public bool inverted;
 
+    private LevelTracker lt;
+
     // Use this for initialization
     void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         if (!Input.gyro.enabled)
         {
             Input.gyro.enabled = true;
@@ -64,48 +66,50 @@ public class Gyro : MonoBehaviour
 
     void FixedUpdate()
     {
-        //This will reset the planes position, so the Y axis is straight (0), does add some "drag" to the game, either make this more smooth, or just use this somehow for movement
-        Quaternion target = Quaternion.Euler(level.rotation.x, 0, level.rotation.y);
-        level.rotation = Quaternion.Slerp(level.rotation, target, Time.deltaTime * smooth);
-
-        switch (type)
+        if (!lt.gameEnded)
         {
-            case typetorotate.ball:
-                if (!inverted)
-                {
-                    //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
-                    initialOrientationX = Input.gyro.rotationRateUnbiased.x;
-                    initialOrientationY = Input.gyro.rotationRateUnbiased.y;
-                }
-                else
-                {
-                    initialOrientationX = -Input.gyro.rotationRateUnbiased.x;
-                    initialOrientationY = -Input.gyro.rotationRateUnbiased.y;
-                }
+            //This will reset the planes position, so the Y axis is straight (0), does add some "drag" to the game, either make this more smooth, or just use this somehow for movement
+            Quaternion target = Quaternion.Euler(level.rotation.x, 0, level.rotation.y);
+            level.rotation = Quaternion.Slerp(level.rotation, target, Time.deltaTime * smooth);
 
-                rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+            switch (type)
+            {
+                case typetorotate.ball:
+                    if (!inverted)
+                    {
+                        //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
+                        initialOrientationX = Input.gyro.rotationRateUnbiased.x;
+                        initialOrientationY = Input.gyro.rotationRateUnbiased.y;
+                    }
+                    else
+                    {
+                        initialOrientationX = -Input.gyro.rotationRateUnbiased.x;
+                        initialOrientationY = -Input.gyro.rotationRateUnbiased.y;
+                    }
 
-                break;
+                    rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
 
-            case typetorotate.level:
+                    break;
 
-                if (!inverted)
-                {
-                    //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
-                    initialOrientationX = -Input.gyro.rotationRateUnbiased.x * tiltAngle;
-                    initialOrientationY = -Input.gyro.rotationRateUnbiased.y * tiltAngle;
-                }
-                else
-                {
-                    initialOrientationX = Input.gyro.rotationRateUnbiased.x * tiltAngle;
-                    initialOrientationY = Input.gyro.rotationRateUnbiased.y * tiltAngle;
-                }
+                case typetorotate.level:
 
-                //Rotates the platform according to the gyroscope in the phone
-                level.Rotate(initialOrientationX / tiltAngle, 0, initialOrientationY / tiltAngle);
-                break;
+                    if (!inverted)
+                    {
+                        //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
+                        initialOrientationX = -Input.gyro.rotationRateUnbiased.x * tiltAngle;
+                        initialOrientationY = -Input.gyro.rotationRateUnbiased.y * tiltAngle;
+                    }
+                    else
+                    {
+                        initialOrientationX = Input.gyro.rotationRateUnbiased.x * tiltAngle;
+                        initialOrientationY = Input.gyro.rotationRateUnbiased.y * tiltAngle;
+                    }
+
+                    //Rotates the platform according to the gyroscope in the phone
+                    level.Rotate(initialOrientationX / tiltAngle, 0, initialOrientationY / tiltAngle);
+                    break;
+            }
         }
-
     }
 
     public IEnumerator InvertControls()
