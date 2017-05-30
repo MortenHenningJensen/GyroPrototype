@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    #region Fields
     private Plate p;
 
     [SerializeField]
@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private bool _canEnd; //End condition has been achieved
+    #endregion
 
+    #region Get/Sets
     public List<GameObject> AllPlates
     {
         get
@@ -117,6 +119,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     // Use this for initialization
     void Start()
     {
@@ -131,10 +135,10 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject pl in plates)
         {
-            allPlates.Add(pl);
+            allPlates.Add(pl); //Adds every Plate in game to a list..
         }
 
-        StartGame();
+        StartGame(); //Runs the StartGame()..
 
         NumbOfWinPlates = actPlates.Count; //Number of activation plates to win
     }
@@ -143,7 +147,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject pl in allPlates)
         {
-            pl.GetComponent<Plate>().SetupPlates(pl);
+            pl.GetComponent<Plate>().SetupPlates(pl); //Runs SetupPlates in Plate.cs, for every Plate..
         }
     }
 
@@ -164,10 +168,11 @@ public class GameManager : MonoBehaviour
     {
         if (NumbOfActivatedPlates == NumbOfWinPlates)
         {
-            CanEnd = true;
+            CanEnd = true; //changes the bool to true, so the game can End.. Disables Plate.ChangeLights()..
 
             foreach (GameObject pl in goalPlate)
             {
+                //Change material on the GoalPlate..
                 pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;
             }

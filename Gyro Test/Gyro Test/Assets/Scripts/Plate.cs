@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour {
 
+    #region Fields
     public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3};
 
     private GameManager gm;
@@ -18,7 +19,6 @@ public class Plate : MonoBehaviour {
 
     [SerializeField]
     private Material _currentMaterial;
-
     [SerializeField]
     private Material _material1;
     [SerializeField]
@@ -30,6 +30,9 @@ public class Plate : MonoBehaviour {
     [SerializeField]
     private Material _material5;
 
+    #endregion
+
+    #region Get/Sets
     public Material CurrentMaterial
     {
         get
@@ -133,17 +136,16 @@ public class Plate : MonoBehaviour {
             _rend = value;
         }
     }
+    
+    #endregion
 
     // Use this for initialization
     public void Start()
     {
-        ////plates = new List<Plate>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Rend = this.GetComponent<Renderer>();
-        Rend.enabled = true;
-        CurrentMaterial = this.GetComponent<Material>();
-
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
+        Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
+        Rend.enabled = true; //Enables the rendere, so we can change it's material..
+        CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
     }
 
     // Update is called once per frame
