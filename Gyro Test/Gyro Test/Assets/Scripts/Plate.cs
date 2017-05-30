@@ -5,18 +5,20 @@ using UnityEngine;
 public class Plate : MonoBehaviour {
 
     #region Fields
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3};
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, LeaverPlate = 4 };
 
     private GameManager gm;
+    private Wall wallScript;
 
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
 
+    //Light Plate
     [SerializeField]
     private bool _light; //Plate_Activation
 
+    //Plate Material
     private Renderer _rend;
-
     [SerializeField]
     private Material _currentMaterial;
     [SerializeField]
@@ -159,6 +161,7 @@ public class Plate : MonoBehaviour {
     public void SetupPlates(GameObject go)
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
+        wallScript = GameObject.Find("Door").GetComponent<Wall>(); //Finds the WallScript, and assing it to the variable "gm"..
         Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
         Rend.enabled = true; //Enables the rendere, so we can change it's material..
         CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
@@ -166,19 +169,24 @@ public class Plate : MonoBehaviour {
         switch (TypeNumb)
         {
             case PlateType.NormalPlate:
-                CurrentMaterial = Material1; //Changes the Current-material to a specific material..
+                CurrentMaterial = Material1; //Blue material..
                 gm.NormPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.ActivationPlate:
-                CurrentMaterial = Material2; //Changes the Current-material to a specific material
+                CurrentMaterial = Material2; //Red material..
                 _light = false; //Turns all lights off at the start..
                 gm.ActPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 gm.NumbOfWinPlates++;
                 break;
             case PlateType.GoalPlate:
-                CurrentMaterial = Material4; //Changes the Current-material to a specific material
+                CurrentMaterial = Material4; //Yellow material..
                 gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
+                break;
+            case PlateType.LeaverPlate:
+                CurrentMaterial = wallScript.Material2; //Brown material..
+                wallScript.WallActive = false; //Sets the wallActive to false, so it is closed..
+                gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
                 break;
             default:
                 break;
@@ -236,6 +244,11 @@ public class Plate : MonoBehaviour {
             if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
             {
                 gm.EndStatus();
+            }
+
+            if (this.TypeNumb == PlateType.LeaverPlate)
+            {
+                wallScript.ChangeWall();
             }
         }
     }
