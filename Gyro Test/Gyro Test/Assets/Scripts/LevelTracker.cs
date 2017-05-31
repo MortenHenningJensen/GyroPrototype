@@ -10,10 +10,12 @@ public class LevelTracker : MonoBehaviour
     private static LevelTracker instanceRef;
     private Canvas gameEnd;
     public bool gameEnded;
-    bool findOnce;
+    public static bool findOnce;
 
     void Awake()
     {
+        findOnce = false;
+
         if (instanceRef == null)
         {
             instanceRef = this;

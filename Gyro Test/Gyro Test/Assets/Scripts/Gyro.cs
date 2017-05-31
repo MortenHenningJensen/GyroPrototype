@@ -85,8 +85,7 @@ public class Gyro : MonoBehaviour
                     {
                         initialOrientationX = -Input.gyro.rotationRateUnbiased.x;
                         initialOrientationY = -Input.gyro.rotationRateUnbiased.y;
-                    }
-
+                    }                   
                     rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
 
                     break;

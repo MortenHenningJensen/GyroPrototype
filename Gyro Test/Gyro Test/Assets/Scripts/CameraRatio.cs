@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraRatio : MonoBehaviour {
+public class CameraRatio : MonoBehaviour
+{
+    [SerializeField]
+    float targetaspect;
+    [SerializeField]
+    float windowaspect;
+    [SerializeField]
+    float scaleheight;
 
     // Use this for initialization
     void Start()
@@ -10,13 +17,13 @@ public class CameraRatio : MonoBehaviour {
         // set the desired aspect ratio (the values in this example are
         // hard-coded for 16:9, but you could make them into public
         // variables instead so you can set them at design time)
-        float targetaspect = 16.0f / 9.0f;
+        targetaspect = 16.0f / 9.0f;
 
         // determine the game window's current aspect ratio
-        float windowaspect = (float)Screen.width / (float)Screen.height;
-
+        //windowaspect = (float)Screen.width / (float)Screen.height;
+        windowaspect = 1.777778f;
         // current viewport height should be scaled by this amount
-        float scaleheight = windowaspect / targetaspect;
+        scaleheight = windowaspect / targetaspect;
 
         // obtain camera component so we can modify its viewport
         Camera camera = GetComponent<Camera>();

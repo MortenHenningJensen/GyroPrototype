@@ -14,7 +14,7 @@ public class ResetBox : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Ball")
         {
             lt.AddDeath();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
