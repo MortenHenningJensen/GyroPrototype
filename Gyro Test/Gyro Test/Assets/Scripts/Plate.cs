@@ -6,11 +6,8 @@ public class Plate : MonoBehaviour
 {
 
     #region Fields
-<<<<<<< HEAD
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4 };
-=======
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, LeaverPlate = 4 };
->>>>>>> origin/Plates
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5 };
+    // public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, LeaverPlate = 4 };
 
     private GameManager gm;
     private Wall wallScript;
@@ -202,18 +199,16 @@ public class Plate : MonoBehaviour
                 gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
-<<<<<<< HEAD
             case PlateType.HolePlate:
                 CurrentMaterial = Material6;
                 BoxCollider col = go.GetComponent<BoxCollider>();
                 col.size = new Vector3(0.25f, 0.25f, 0.25f);
-               // this.GetComponent<BoxCollider>().enabled = false;
-=======
+                // this.GetComponent<BoxCollider>().enabled = false;
+                break;
             case PlateType.LeaverPlate:
                 CurrentMaterial = wallScript.Material2; //Brown material..
                 wallScript.WallActive = false; //Sets the wallActive to false, so it is closed..
                 gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
->>>>>>> origin/Plates
                 break;
             default:
                 break;
@@ -273,16 +268,15 @@ public class Plate : MonoBehaviour
                 gm.EndStatus();
             }
 
-<<<<<<< HEAD
             if (this.TypeNumb == PlateType.HolePlate)
             {
                 GameObject go = GameObject.Find("LevelContainer");
                 go.SetActive(false);
-=======
+            }
+
             if (this.TypeNumb == PlateType.LeaverPlate)
             {
                 wallScript.ChangeWall();
->>>>>>> origin/Plates
             }
         }
     }
