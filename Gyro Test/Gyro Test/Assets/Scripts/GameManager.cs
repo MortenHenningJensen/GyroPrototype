@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     #region Fields
-    private Plate p;
 
     [SerializeField]
     private int _numbOfWinPlates; //Test
@@ -23,6 +22,12 @@ public class GameManager : MonoBehaviour
     private List<GameObject> actPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> goalPlate; //Contains only the Start-/GoalPlate
+
+    [SerializeField]
+    private GameObject[] doors; //Finds all Gameobjects with tag "Plate"
+    [SerializeField]
+    private List<GameObject> doorWall; //Contains only the Start-/GoalPlate
+
 
     [SerializeField]
     private bool _canEnd; //End condition has been achieved
@@ -124,6 +129,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<GameObject> DoorWall
+    {
+        get
+        {
+            return doorWall;
+        }
+
+        set
+        {
+            doorWall = value;
+        }
+    }
+
     #endregion
 
     // Use this for initialization
@@ -136,12 +154,18 @@ public class GameManager : MonoBehaviour
         actPlates = new List<GameObject>();     //List of all Activation Plates
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
+        doorWall = new List<GameObject>();      //List containing the Doors..
 
         plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
-
         foreach (GameObject pl in plates)
         {
             allPlates.Add(pl); //Adds every Plate in game to a list..
+        }
+
+        doors = GameObject.FindGameObjectsWithTag("Door"); //adds every gameobject with Tag "Plate" to this list
+        foreach (GameObject door in doorWall)
+        {
+            doorWall.Add(door); //Adds every Plate in game to a list..
         }
 
         StartGame(); //Runs the StartGame()..
@@ -154,6 +178,10 @@ public class GameManager : MonoBehaviour
         foreach (GameObject pl in allPlates)
         {
             pl.GetComponent<Plate>().SetupPlates(pl); //Runs SetupPlates in Plate.cs, for every Plate..
+        }
+        foreach (GameObject wall in DoorWall)
+        {
+            wall.GetComponent<Wall>().SetupWalls(wall); //Runs SetupPlates in Plate.cs, for every Plate..
         }
     }
 
