@@ -177,7 +177,6 @@ public class Plate : MonoBehaviour
     public void SetupPlates(GameObject go)
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
-        wallScript = GameObject.Find("Door").GetComponent<Wall>(); //Finds the WallScript, and assing it to the variable "gm"..
         Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
         Rend.enabled = true; //Enables the rendere, so we can change it's material..
         CurrentMaterial = this.GetComponent<Material>(); //Assigns a new variable, which has properties of a material..
@@ -206,6 +205,7 @@ public class Plate : MonoBehaviour
                 // this.GetComponent<BoxCollider>().enabled = false;
                 break;
             case PlateType.LeaverPlate:
+                wallScript = GameObject.Find("Door").GetComponent<Wall>(); //Finds the WallScript, and assing it to the variable "gm"..
                 CurrentMaterial = wallScript.Material2; //Brown material..
                 wallScript.WallActive = false; //Sets the wallActive to false, so it is closed..
                 gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
