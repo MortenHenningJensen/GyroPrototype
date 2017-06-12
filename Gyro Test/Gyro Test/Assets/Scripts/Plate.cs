@@ -19,7 +19,7 @@ public class Plate : MonoBehaviour
 
     //Light Plate
     [SerializeField]
-    private bool _light; //Plate_Activation
+    public bool _light; //Plate_Activation
 
     //Plate Material
     private Renderer _rend;
@@ -254,7 +254,7 @@ public class Plate : MonoBehaviour
     /// Can only Change the Light, if all the lights have not been activated..
     /// Changes the light "On" and "Off", and the color of the Plate...
     /// </summary>
-    void ChangeLight()
+    public void ChangeLight()
     {
         if (!gm.CanEnd) //If the game hasn't ended yet..
         {
@@ -309,7 +309,7 @@ public class Plate : MonoBehaviour
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
-            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
+            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd && !_light)
             {
                 if (this._actPlaState == ActivationPlateState.Off)
                 {

@@ -1,20 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/World 1/1-8.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/World 1/1-8.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Thomas Test with New.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Thomas Test with New.unity
-=======
-- path: Assets/Scenes/World 1/1-1.unity
->>>>>>> origin/Morten
->>>>>>> origin/Plates
->>>>>>> origin/Morten
->>>>>>> origin/Laisen
+- path: Assets/Scenes/World 1/1-2.unity
   isLoaded: 1
   isActive: 1

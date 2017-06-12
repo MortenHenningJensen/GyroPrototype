@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TypeOfGame { Normal, RandomActivation, ListActivation }
+
 public class GameManager : MonoBehaviour
 {
     #region Fields
@@ -23,8 +25,11 @@ public class GameManager : MonoBehaviour
     private List<GameObject> actPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> goalPlate; //Contains only the Start-/GoalPlate
+    [SerializeField]
+    public List<GameObject> listActivationOrder; //Finds all Gameobjects with tag "Plate"
 
     //Locked Activation Plates
+    [SerializeField]
     private List<GameObject> lockedPlates;
     private int _rand;
     private bool _isActive;
@@ -39,8 +44,12 @@ public class GameManager : MonoBehaviour
 
     public Canvas gameEnd;
     public LevelTracker lt;
-
+    public TypeOfGame tog;
     #endregion
+
+    [SerializeField]
+    private int currentIndex;
+
 
     #region Get/Sets
     public List<GameObject> AllPlates
@@ -152,6 +161,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        currentIndex = 0;
         _isActive = false;
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         pScript = GameObject.Find("Plate").GetComponent<Plate>();
@@ -163,6 +173,7 @@ public class GameManager : MonoBehaviour
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
         doorWall = new List<GameObject>();      //List containing the Doors..
         lockedPlates = new List<GameObject>();  //List of locked Plates
+        //listActivationOrder = new List<GameObject>();
 
         plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
         foreach (GameObject pl in plates)
@@ -198,6 +209,7 @@ public class GameManager : MonoBehaviour
         {
             WinningCondition();
         }
+
         LockedPlatesStatus();
     }
 
@@ -206,7 +218,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
     /// <summary>
     /// Checks the number of activated plates, if it is equal to 
     /// the number of plates required to win..
@@ -231,6 +242,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// Finds all the Activation Plates in the game, and adds them to a list of Locked-plates..
     /// A Random, will then take one of the Locked-plates and make it accessible for the ball..
@@ -243,7 +255,15 @@ public class GameManager : MonoBehaviour
         if (lockedPlates.Count == 0)
         {
             Debug.Log("LockedPlates-list is empty!");
-            lockedPlates = ActPlates; //Adds the ActivationPlates, to the LockedPlates-List
+            switch(tog)
+            {
+                case TypeOfGame.RandomActivation:
+                    lockedPlates = ActPlates; //Adds the ActivationPlates, to the LockedPlates-List
+                    break;
+                case TypeOfGame.ListActivation:
+                    lockedPlates = listActivationOrder;
+                    break;
+            }
             foreach (GameObject go in ActPlates)
             {
                 Debug.Log("Plates in ActPlates: " + go);
@@ -258,6 +278,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(_rand);
         if (!CanEnd)
         {
+
             if (!_isActive)
             {
                 _isActive = true;
@@ -265,19 +286,53 @@ public class GameManager : MonoBehaviour
                 Debug.Log(_rand);
             }
 
-            if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
+            switch (tog)
             {
-                lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
-                pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+                case TypeOfGame.Normal:
+                    foreach (GameObject plate in actPlates)
+                    {
+                        plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
+                        plate.GetComponent<Plate>().ActivationPlateSetup(plate);
+                    }
+                    break;
+
+                case TypeOfGame.RandomActivation:
+                    if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
+                    {
+                        lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
+                        pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+                        break;
+                    }
+                    if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
+                    {
+                        _isActive = false;
+                        lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+                        break;
+                    }
+                    break;
+
+                case TypeOfGame.ListActivation:
+                    if (listActivationOrder[currentIndex].GetComponent<Plate>().MatActPlateLocked)
+                    {
+                        lockedPlates[currentIndex].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
+                        pScript.ActivationPlateSetup(lockedPlates[currentIndex]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+                        currentIndex++;
+                        break;
+                    }
+                    if (listActivationOrder[currentIndex].GetComponent<Plate>().MatActPlateOn)
+                    {
+                        _isActive = false;
+                        lockedPlates.RemoveAt(currentIndex); //Removes the selected LockedPlate from the LockedPlates-List..
+                        break;
+                    }
+                    break;
+
+                default:
+                    break;
             }
-            if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
-            {
-                _isActive = false;
-                lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
-            }
+
             //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
             //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
-
         }
     }
 
