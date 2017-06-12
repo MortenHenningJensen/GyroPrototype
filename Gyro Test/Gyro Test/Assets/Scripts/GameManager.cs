@@ -183,6 +183,11 @@ public class GameManager : MonoBehaviour
         {
             wall.GetComponent<Wall>().SetupWalls(wall); //Runs SetupPlates in Plate.cs, for every Plate..
         }
+
+        if (NumbOfWinPlates + actPlates.Count == 0)
+        {
+            WinningCondition();
+        }
     }
 
     // Update is called once per frame
