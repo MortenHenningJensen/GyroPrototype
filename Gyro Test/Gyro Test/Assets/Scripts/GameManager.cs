@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int currentIndex;
 
+    public Material test;
 
     #region Get/Sets
     public List<GameObject> AllPlates
@@ -242,7 +243,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Finds all the Activation Plates in the game, and adds them to a list of Locked-plates..
     /// A Random, will then take one of the Locked-plates and make it accessible for the ball..
@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
         if (lockedPlates.Count == 0)
         {
             Debug.Log("LockedPlates-list is empty!");
-            switch(tog)
+            switch (tog)
             {
                 case TypeOfGame.RandomActivation:
                     lockedPlates = ActPlates; //Adds the ActivationPlates, to the LockedPlates-List
@@ -278,7 +278,6 @@ public class GameManager : MonoBehaviour
         //Debug.Log(_rand);
         if (!CanEnd)
         {
-
             if (!_isActive)
             {
                 _isActive = true;
@@ -297,17 +296,17 @@ public class GameManager : MonoBehaviour
                     break;
 
                 case TypeOfGame.RandomActivation:
+
                     if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
                     {
                         lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
                         pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
-                        break;
                     }
-                    if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
+
+                    if (ActPlates[_rand].GetComponent<Plate>().CurrentMaterial == test)
                     {
                         _isActive = false;
                         lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
-                        break;
                     }
                     break;
 
@@ -325,9 +324,6 @@ public class GameManager : MonoBehaviour
                         lockedPlates.RemoveAt(currentIndex); //Removes the selected LockedPlate from the LockedPlates-List..
                         break;
                     }
-                    break;
-
-                default:
                     break;
             }
 

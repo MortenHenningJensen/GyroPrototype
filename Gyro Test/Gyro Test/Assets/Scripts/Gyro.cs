@@ -49,7 +49,7 @@ public class Gyro : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
             type = typetorotate.ball;
-            speed = 0.1f;
+            speed = 10f;
         }
         else
         {
