@@ -1,5 +1,6 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/Scenes/World 1/1-8.unity
 =======
 <<<<<<< HEAD
@@ -11,6 +12,9 @@ sceneSetups:
 - path: Assets/Scenes/World 1/1-1.unity
 >>>>>>> origin/Morten
 >>>>>>> origin/Plates
+>>>>>>> origin/Morten
+=======
+- path: Assets/Scenes/World 1/1-8.unity
 >>>>>>> origin/Morten
   isLoaded: 1
   isActive: 1

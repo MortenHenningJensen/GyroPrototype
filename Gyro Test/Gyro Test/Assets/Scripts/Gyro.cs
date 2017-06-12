@@ -39,7 +39,6 @@ public class Gyro : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         if (!Input.gyro.enabled)
         {
