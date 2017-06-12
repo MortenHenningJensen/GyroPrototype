@@ -1,10 +1,19 @@
 fileFormatVersion: 2
 guid: a413e0c095569684b90618a31afcac10
-timeCreated: 1495030090
+timeCreated: 1496747376
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _currentMaterial: {instanceID: 0}
+  - _matNormPlate: {fileID: 2100000, guid: d352b1a7f6bc51a4a8d3405c5a93243b, type: 2}
+  - _matActPlateOff: {fileID: 2100000, guid: 49c10ec75188902478c77e8b821c6178, type: 2}
+  - _matActPlateOn: {fileID: 2100000, guid: b97eea79932a59e40b2d7eb84b3084db, type: 2}
+  - _matGoalOff: {fileID: 2100000, guid: a2f79b0866b1de94cbfc5f41c41fc09f, type: 2}
+  - _matGoalOn: {fileID: 2100000, guid: 79b1c028ee6ae184ab2e7f0e8c21055b, type: 2}
+  - _matHole: {fileID: 2100000, guid: 3e1efe4abe27b1147ad231b45aa19b4d, type: 2}
+  - _matActPlateLocked: {fileID: 2100000, guid: bf75f771985f6db4087f059a3aec9987,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

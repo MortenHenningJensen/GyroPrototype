@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     #region Fields
+    private Plate pScript;
 
     [SerializeField]
     private int _numbOfWinPlates; //Test
@@ -22,12 +23,16 @@ public class GameManager : MonoBehaviour
     private List<GameObject> actPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> goalPlate; //Contains only the Start-/GoalPlate
+    
+    //Locked Activation Plates
+    private List<GameObject> lockedPlates;
+    private int _rand;
+    private bool _isActive;
 
     [SerializeField]
     private GameObject[] doors; //Finds all Gameobjects with tag "Plate"
     [SerializeField]
     private List<GameObject> doorWall; //Contains only the Start-/GoalPlate
-
 
     [SerializeField]
     private bool _canEnd; //End condition has been achieved
@@ -147,7 +152,9 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _isActive = false;
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
+        pScript = GameObject.Find("Plate").GetComponent<Plate>();
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
@@ -155,6 +162,7 @@ public class GameManager : MonoBehaviour
         normPlates = new List<GameObject>();    //List of all Normal Plates
         goalPlate = new List<GameObject>();     //List containing the Goal Plate
         doorWall = new List<GameObject>();      //List containing the Doors..
+        lockedPlates = new List<GameObject>();  //List of locked Plates
 
         plates = GameObject.FindGameObjectsWithTag("Plate"); //adds every gameobject with Tag "Plate" to this list.
         foreach (GameObject pl in plates)
@@ -179,10 +187,19 @@ public class GameManager : MonoBehaviour
         {
             pl.GetComponent<Plate>().SetupPlates(pl); //Runs SetupPlates in Plate.cs, for every Plate..
         }
+        LockedPlatesStatus();
         foreach (GameObject wall in DoorWall)
         {
             wall.GetComponent<Wall>().SetupWalls(wall); //Runs SetupPlates in Plate.cs, for every Plate..
         }
+
+<<<<<<< HEAD
+        if (NumbOfWinPlates + actPlates.Count == 0)
+        {
+            WinningCondition();
+        }
+=======
+>>>>>>> origin/Plates
     }
 
     // Update is called once per frame
@@ -207,12 +224,59 @@ public class GameManager : MonoBehaviour
             foreach (GameObject pl in goalPlate)
             {
                 //Change material on the GoalPlate..
-                pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().Material5;
+                pl.GetComponent<Plate>().CurrentMaterial = pl.GetComponent<Plate>().MatGoalOn;
                 pl.GetComponent<Plate>().Rend.material = pl.GetComponent<Plate>().CurrentMaterial;
             }
 
             Debug.Log("You can now finish the game!");
         }
+    }
+
+    /// <summary>
+    /// Finds all the Activation Plates in the game, and adds them to a list of Locked-plates..
+    /// A Random, will then take one of the Locked-plates and make it accessible for the ball..
+    /// It then removes the Locked-plate from the list of Locked-plates..
+    /// </summary>
+    public void LockedPlatesStatus()
+    {
+        Debug.Log("Im running!");
+        Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+        if (lockedPlates.Count == 0)
+        {
+            Debug.Log("LockedPlates-list is empty!");
+            lockedPlates = ActPlates; //Adds the ActivationPlates, to the LockedPlates-List
+            foreach (GameObject go in ActPlates)
+            {
+                Debug.Log("Plates in ActPlates: " + go);
+            }
+            foreach (GameObject go in lockedPlates)
+            {
+                Debug.Log("Plates in lockedPlates: " + go);
+            }
+            Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+        }
+        //_rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
+        //Debug.Log(_rand);
+        if (!_isActive)
+        {
+            _isActive = true;
+            _rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
+            Debug.Log(_rand);
+        }
+
+        if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
+        {
+            lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
+            pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+        }
+        if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
+        {
+            _isActive = false;
+            lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+        }
+        //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+        //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+
     }
 
     public void EndStatus()
