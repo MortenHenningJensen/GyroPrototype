@@ -7,13 +7,15 @@ public class Plate : MonoBehaviour
 
     #region Fields
     public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5 };
-    // public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, LeaverPlate = 4 };
+    public enum ActivationPlateState { Off = 1, On = 2 };
 
     private GameManager gm;
     private Wall wallScript;
 
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
+    [SerializeField]
+    private ActivationPlateState _actPlaState; //State the Activation Plate is in..
 
     //Light Plate
     [SerializeField]
@@ -24,17 +26,19 @@ public class Plate : MonoBehaviour
     [SerializeField]
     private Material _currentMaterial;
     [SerializeField]
-    private Material _material1;
+    private Material _matNormPlate;
     [SerializeField]
-    private Material _material2;
+    private Material _matActPlateOff;
     [SerializeField]
-    private Material _material3;
+    private Material _matActPlateOn;
     [SerializeField]
-    private Material _material4;
+    private Material _matGoalOff;
     [SerializeField]
-    private Material _material5;
+    private Material _matGoalOn;
     [SerializeField]
-    private Material _material6;
+    private Material _matHole;
+    [SerializeField]
+    private Material _matActPlateLocked;
 
     #endregion
 
@@ -52,81 +56,94 @@ public class Plate : MonoBehaviour
         }
     }
 
-    public Material Material1
+    public Material MatNormPlate
     {
         get
         {
-            return _material1;
+            return _matNormPlate;
         }
 
         set
         {
-            _material1 = value;
+            _matNormPlate = value;
         }
     }
 
-    public Material Material2
+    public Material MatActPlateOff
     {
         get
         {
-            return _material2;
+            return _matActPlateOff;
         }
 
         set
         {
-            _material2 = value;
+            _matActPlateOff = value;
         }
     }
 
-    public Material Material3
+    public Material MatActPlateOn
     {
         get
         {
-            return _material3;
+            return _matActPlateOn;
         }
 
         set
         {
-            _material3 = value;
+            _matActPlateOn = value;
         }
     }
 
-    public Material Material4
+    public Material MatGoalOff
     {
         get
         {
-            return _material4;
+            return _matGoalOff;
         }
 
         set
         {
-            _material4 = value;
+            _matGoalOff = value;
         }
     }
 
-    public Material Material5
+    public Material MatGoalOn
     {
         get
         {
-            return _material5;
+            return _matGoalOn;
         }
 
         set
         {
-            _material5 = value;
+            _matGoalOn = value;
         }
     }
 
-    public Material Material6
+    public Material MatHole
     {
         get
         {
-            return _material6;
+            return _matHole;
         }
 
         set
         {
-            _material6 = value;
+            _matHole = value;
+        }
+    }
+
+    public Material MatActPlateLocked
+    {
+        get
+        {
+            return _matActPlateLocked;
+        }
+
+        set
+        {
+            _matActPlateLocked = value;
         }
     }
 
@@ -143,6 +160,19 @@ public class Plate : MonoBehaviour
         }
     }
 
+    public ActivationPlateState ActPlaState
+    {
+        get
+        {
+            return _actPlaState;
+        }
+
+        set
+        {
+            _actPlaState = value;
+        }
+    }
+
     public Renderer Rend
     {
         get
@@ -155,11 +185,13 @@ public class Plate : MonoBehaviour
             _rend = value;
         }
     }
+
     #endregion
 
     // Use this for initialization
     public void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -184,22 +216,23 @@ public class Plate : MonoBehaviour
         switch (TypeNumb)
         {
             case PlateType.NormalPlate:
-                CurrentMaterial = Material1; //Blue material..
+                CurrentMaterial = MatNormPlate; //Blue material..
                 gm.NormPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.ActivationPlate:
-                CurrentMaterial = Material2; //Red material..
+                ActPlaState = ActivationPlateState.Off;
+                ActivationPlateSetup(this.gameObject);
                 _light = false; //Turns all lights off at the start..
                 gm.ActPlates.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 gm.NumbOfWinPlates++;
                 break;
             case PlateType.GoalPlate:
-                CurrentMaterial = Material4; //Yellow material..
+                CurrentMaterial = MatGoalOff; //Yellow material..
                 gm.CanEnd = false; //Sets the goal to false, so you can't end right away..
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.HolePlate:
-                CurrentMaterial = Material6;
+                CurrentMaterial = MatHole;
                 BoxCollider col = go.GetComponent<BoxCollider>();
                 col.size = new Vector3(0.25f, 0.25f, 0.25f);
                 // this.GetComponent<BoxCollider>().enabled = false;
@@ -228,13 +261,13 @@ public class Plate : MonoBehaviour
             _light = !_light; //Switched the current light to the opposite
             if (_light)
             {
-                CurrentMaterial = Material3;
+                CurrentMaterial = MatActPlateOn;
                 this._light = true; //Turns ActivationPlate's Light ON
                 gm.NumbOfActivatedPlates++;
             }
             else if (!_light)
             {
-                CurrentMaterial = Material2;
+                CurrentMaterial = MatActPlateOff;
                 this._light = false; //Turns ActivationPlate's Light OFF
                 gm.NumbOfActivatedPlates--;
             }
@@ -245,6 +278,24 @@ public class Plate : MonoBehaviour
 
             gm.WinningCondition(); //Checks if we can win...
         }
+    }
+
+    public void ActivationPlateSetup(GameObject go)
+    {
+        switch (go.GetComponent<Plate>().ActPlaState)
+        {
+            case ActivationPlateState.Off:
+                go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateLocked; //Red-Cross Material
+                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+                break;
+            case ActivationPlateState.On:
+                go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateOff; //Red material..
+                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+                break;
+            default:
+                break;
+        }
+        go.GetComponent<Plate>().Rend.material = go.GetComponent<Plate>().CurrentMaterial;
     }
 
     /// <summary>
@@ -260,7 +311,15 @@ public class Plate : MonoBehaviour
         {
             if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
             {
-                ChangeLight();
+                if (this._actPlaState == ActivationPlateState.Off)
+                {
+                    Debug.Log("Can't turn this on right now..");
+                }
+                else if (this._actPlaState == ActivationPlateState.On)
+                {
+                    ChangeLight();
+                    gm.LockedPlatesStatus();
+                }
             }
 
             if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
