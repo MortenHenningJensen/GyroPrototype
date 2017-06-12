@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> actPlates; //Contains all the activationPlates
     [SerializeField]
     private List<GameObject> goalPlate; //Contains only the Start-/GoalPlate
-    
+
     //Locked Activation Plates
     private List<GameObject> lockedPlates;
     private int _rand;
@@ -187,19 +187,18 @@ public class GameManager : MonoBehaviour
         {
             pl.GetComponent<Plate>().SetupPlates(pl); //Runs SetupPlates in Plate.cs, for every Plate..
         }
-        LockedPlatesStatus();
+
         foreach (GameObject wall in DoorWall)
         {
             wall.GetComponent<Wall>().SetupWalls(wall); //Runs SetupPlates in Plate.cs, for every Plate..
         }
 
-<<<<<<< HEAD
+
         if (NumbOfWinPlates + actPlates.Count == 0)
         {
             WinningCondition();
         }
-=======
->>>>>>> origin/Plates
+        LockedPlatesStatus();
     }
 
     // Update is called once per frame
@@ -257,26 +256,29 @@ public class GameManager : MonoBehaviour
         }
         //_rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
         //Debug.Log(_rand);
-        if (!_isActive)
+        if (!CanEnd)
         {
-            _isActive = true;
-            _rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
-            Debug.Log(_rand);
-        }
+            if (!_isActive)
+            {
+                _isActive = true;
+                _rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
+                Debug.Log(_rand);
+            }
 
-        if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
-        {
-            lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
-            pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
-        }
-        if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
-        {
-            _isActive = false;
-            lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
-        }
-        //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
-        //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+            if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
+            {
+                lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
+                pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+            }
+            if (ActPlates[_rand].GetComponent<Plate>().MatActPlateOn)
+            {
+                _isActive = false;
+                lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+            }
+            //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+            //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
 
+        }
     }
 
     public void EndStatus()
@@ -287,7 +289,7 @@ public class GameManager : MonoBehaviour
         Text endStatusText = GameObject.Find("Game Over").GetComponent<Text>();
         endStatusText.text = "YOU ROLL";
 
-        lt.gameEnded = true;     
+        lt.gameEnded = true;
 
         //1. Load animation for switching levels
         //2. Pop-up with status screen (Time, Re-tries)
