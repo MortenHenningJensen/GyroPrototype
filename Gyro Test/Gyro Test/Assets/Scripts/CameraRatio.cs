@@ -22,8 +22,8 @@ public class CameraRatio : MonoBehaviour
         targetaspect = 16.0f / 9.0f;
 
         // determine the game window's current aspect ratio
-        windowaspect = (float)Screen.width / (float)Screen.height;
-        //windowaspect = 1.777778f;
+        //windowaspect = (float)Screen.width / (float)Screen.height;
+        windowaspect = 1.777778f;
 
         // current viewport height should be scaled by this amount
         scaleheight = windowaspect / targetaspect;
