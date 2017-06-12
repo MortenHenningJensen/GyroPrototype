@@ -20,6 +20,10 @@ public class Gyro : MonoBehaviour
     [Header("Phone Variables")]
     public float initialOrientationX;
     public float initialOrientationY;
+    public float minXtilt = -45;
+    public float maxXtilt = 45;
+    public float minYtilt = -45;
+    public float maxYtilt = 45;
     [Range(0.1f, 2f)]
     public float smooth = 0.5F;
     public float tiltAngle = 30.0F;
@@ -46,7 +50,7 @@ public class Gyro : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
             type = typetorotate.ball;
-            speed = 10;
+            speed = 0.1f;
         }
         else
         {
@@ -78,16 +82,22 @@ public class Gyro : MonoBehaviour
                     if (!inverted)
                     {
                         //Using -Input here, so it feels more real, so when you tilt for phone forward, the plane will go forward
-                        initialOrientationX = Input.gyro.rotationRateUnbiased.x;
-                        initialOrientationY = Input.gyro.rotationRateUnbiased.y;
+                        //initialOrientationX = Input.gyro.rotationRateUnbiased.x;
+                        //initialOrientationY = Input.gyro.rotationRateUnbiased.y;
+                        initialOrientationX = -Input.acceleration.y;
+                        initialOrientationY = Input.acceleration.x;
                     }
                     else
                     {
                         initialOrientationX = -Input.gyro.rotationRateUnbiased.x;
                         initialOrientationY = -Input.gyro.rotationRateUnbiased.y;
-                    }                   
-                    rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+                    }
 
+                    initialOrientationY = Mathf.Clamp(initialOrientationY, minYtilt, maxYtilt);
+                    initialOrientationX = Mathf.Clamp(initialOrientationX, minXtilt, maxYtilt);
+                    //rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+                    rb.transform.Translate(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+                    Debug.DrawRay(rb.transform.position + Vector3.up, Input.acceleration, Color.red);
                     break;
 
                 case typetorotate.level:
