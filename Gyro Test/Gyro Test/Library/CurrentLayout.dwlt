@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 8}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 21
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,8 +214,8 @@ MonoBehaviour:
     y: 0
     width: 1154
     height: 374
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -251,7 +251,7 @@ MonoBehaviour:
 =======
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 <<<<<<< HEAD
 >>>>>>> origin/Morten
@@ -333,6 +333,7 @@ MonoBehaviour:
   vertical: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 48
 >>>>>>> origin/Morten
 --- !u!114 &10
@@ -341,6 +342,9 @@ MonoBehaviour:
 =======
   controlID: 22
 >>>>>>> origin/Morten
+=======
+  controlID: 48
+>>>>>>> origin/master
 --- !u!114 &12
 >>>>>>> origin/Morten
 MonoBehaviour:
@@ -365,7 +369,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 23
+  controlID: 49
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -513,16 +517,17 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Sprites
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Sprites
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\GYRO\Gyro Test\Gyro Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -543,6 +548,11 @@ MonoBehaviour:
 >>>>>>> origin/Morten
     m_ExpandedIDs: 00000000e224000080250000c6250000c8250000ffffff7f
 >>>>>>> origin/Morten
+=======
+    m_SelectedIDs: dac00100
+    m_LastClickedID: 114906
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000ffffff7f
+>>>>>>> origin/master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -572,6 +582,7 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000da24000074250000ba250000
 =======
     m_ExpandedIDs: 00000000e22400007c250000c2250000c4250000
@@ -579,6 +590,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 00000000e224000080250000c6250000c8250000
 >>>>>>> origin/Morten
+=======
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000
+>>>>>>> origin/master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,20 +623,20 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Sprites
+      m_OriginalName: Sprites
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 114906
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 7}
+      m_ClientGUIView: {fileID: 3}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -693,29 +707,29 @@ MonoBehaviour:
     width: 380
     height: 552
   m_TreeViewState:
-    scrollPos: {x: 0, y: 16}
-    m_SelectedIDs: 46fbffff
-    m_LastClickedID: -1210
-    m_ExpandedIDs: e0fbffff00000000c429000084300000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 024cfeffde4cfeffa64dfeff584efeff0a4ffefffc4ffeffae50feff6051feff1252feffc452feff7653feff8c53feffda82feff3284feff8885feff3202ffff0604ffffe605ffff3e07ffff9408ffffa0e9ffff96ebffff6aedffff7eefffff52f1ffff68f3ffff3cf5ffff10f7ffffe4f8ffffe0fbffff00000000968e0000a2930000c0980100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: LevelContainer
+      m_OriginalName: LevelContainer
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -97746
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 2}
     m_SearchString: 
   m_ExpandedScenes:
-  - 1-4
+  - 1-9
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -746,11 +760,12 @@ MonoBehaviour:
     width: 1145
     height: 552
   m_SceneLighting: 1
-  lastFramingTime: 0
+  lastFramingTime: 969.2040471376267
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: -3.539396, y: -3.016757, z: 6.269285}
@@ -766,6 +781,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -4.3556147, y: 1.853898, z: -0.4023502}
 >>>>>>> origin/Morten
+=======
+    m_Target: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+    speed: 2
+    m_Value: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+>>>>>>> origin/master
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -790,6 +810,7 @@ MonoBehaviour:
   m_Rotation:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.40664658, y: -0.014237694, z: 0.0063396366, w: -0.9134526}
     speed: 2
     m_Value: {x: -0.40664658, y: -0.014237694, z: 0.0063396366, w: -0.9134526}
@@ -807,10 +828,15 @@ MonoBehaviour:
 =======
     m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647125, w: -0.79528254}
 >>>>>>> origin/Morten
-  m_Size:
-    m_Target: 11.714125
+=======
+    m_Target: {x: -0.4284826, y: -0.0008135675, z: 0.0003857416, w: -0.90354955}
     speed: 2
-    m_Value: 11.714125
+    m_Value: {x: -0.42848262, y: -0.00081356755, z: 0.00038574162, w: -0.9035496}
+>>>>>>> origin/master
+  m_Size:
+    m_Target: 14.593296
+    speed: 2
+    m_Value: 14.593296
   m_Ortho:
     m_Target: 0
     speed: 2
