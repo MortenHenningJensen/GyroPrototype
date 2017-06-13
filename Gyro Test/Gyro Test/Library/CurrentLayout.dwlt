@@ -332,6 +332,10 @@ MonoBehaviour:
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
 <<<<<<< HEAD
   controlID: 48
 >>>>>>> origin/Morten
@@ -341,6 +345,12 @@ MonoBehaviour:
 =======
   controlID: 22
 >>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+  controlID: 48
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
 --- !u!114 &12
 >>>>>>> origin/Morten
 MonoBehaviour:
@@ -524,6 +534,10 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 34250000
@@ -543,6 +557,14 @@ MonoBehaviour:
 >>>>>>> origin/Morten
     m_ExpandedIDs: 00000000e224000080250000c6250000c8250000ffffff7f
 >>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_SelectedIDs: dac00100
+    m_LastClickedID: 114906
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000ffffff7f
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -571,6 +593,10 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_ExpandedIDs: 00000000da24000074250000ba250000
 =======
@@ -579,6 +605,12 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 00000000e224000080250000c6250000c8250000
 >>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -752,6 +784,10 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: -3.539396, y: -3.016757, z: 6.269285}
     speed: 2
@@ -766,6 +802,14 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -4.3556147, y: 1.853898, z: -0.4023502}
 >>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_Target: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+    speed: 2
+    m_Value: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -789,6 +833,10 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: -0.40664658, y: -0.014237694, z: 0.0063396366, w: -0.9134526}
     speed: 2
@@ -807,6 +855,14 @@ MonoBehaviour:
 =======
     m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647125, w: -0.79528254}
 >>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_Target: {x: -0.4284826, y: -0.0008135675, z: 0.0003857416, w: -0.90354955}
+    speed: 2
+    m_Value: {x: -0.42848262, y: -0.00081356755, z: 0.00038574162, w: -0.9035496}
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
   m_Size:
     m_Target: 11.714125
     speed: 2
