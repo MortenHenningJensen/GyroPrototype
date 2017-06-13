@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
         _isActive = false;
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         pScript = GameObject.Find("Plate").GetComponent<Plate>();
+        test = pScript.MatActPlateOn;
         _numbOfActivatedPlates = 0;
         _numbOfWinPlates = 0;
         allPlates = new List<GameObject>();     //List of all Plates ingame
@@ -280,9 +281,7 @@ public class GameManager : MonoBehaviour
         {
             if (!_isActive)
             {
-                _isActive = true;
-                _rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
-                Debug.Log(_rand);
+                GetRandNumber();
             }
 
             switch (tog)
@@ -297,17 +296,19 @@ public class GameManager : MonoBehaviour
 
                 case TypeOfGame.RandomActivation:
 
-                    if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
-                    {
-                        lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
-                        pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
-                    }
-
                     if (ActPlates[_rand].GetComponent<Plate>().CurrentMaterial == test)
                     {
-                        _isActive = false;
+                        //_isActive = false;
                         lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+                        GetRandNumber();
                     }
+
+                    //if (ActPlates[_rand].GetComponent<Plate>().MatActPlateLocked)
+                    //{
+                    lockedPlates[_rand].GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On; //Sets the Act..State to ON, on the random selected Plate..
+                    pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
+                    //}
+
                     break;
 
                 case TypeOfGame.ListActivation:
@@ -330,6 +331,12 @@ public class GameManager : MonoBehaviour
             //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
             //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
         }
+    }
+
+    void GetRandNumber()
+    {
+        _isActive = true;
+        _rand = Random.Range(0, lockedPlates.Count - 1); //Finds a random LockedPlate on the list.
     }
 
     public void EndStatus()
