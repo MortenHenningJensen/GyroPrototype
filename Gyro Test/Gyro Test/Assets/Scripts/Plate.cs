@@ -309,7 +309,7 @@ public class Plate : MonoBehaviour
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
-            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd && !_light)
+            if (this.TypeNumb == PlateType.ActivationPlate && !gm.CanEnd)
             {
                 if (this._actPlaState == ActivationPlateState.Off)
                 {
