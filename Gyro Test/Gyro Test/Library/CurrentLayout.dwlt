@@ -128,7 +128,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 167
+  controlID: 110
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 165
+  controlID: 21
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
 =======
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 <<<<<<< HEAD
 >>>>>>> origin/Morten
@@ -332,11 +332,15 @@ MonoBehaviour:
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 48
 >>>>>>> origin/Morten
 --- !u!114 &10
 =======
   controlID: 166
+=======
+  controlID: 22
+>>>>>>> origin/Morten
 --- !u!114 &12
 >>>>>>> origin/Morten
 MonoBehaviour:
@@ -361,7 +365,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 214
+  controlID: 23
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -509,16 +513,17 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes/World 1
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes/World 1
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\GYRO\Gyro Test\Gyro Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 34250000
@@ -532,6 +537,10 @@ MonoBehaviour:
 =======
     m_SelectedIDs: 3e250000
     m_LastClickedID: 9534
+=======
+    m_SelectedIDs: aa260000
+    m_LastClickedID: 9898
+>>>>>>> origin/Morten
     m_ExpandedIDs: 00000000e224000080250000c6250000c8250000ffffff7f
 >>>>>>> origin/Morten
     m_RenameOverlay:
@@ -684,10 +693,10 @@ MonoBehaviour:
     width: 380
     height: 552
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1e3efbff
-    m_LastClickedID: -311778
-    m_ExpandedIDs: b83efbffd402fcff7c6dfeffc48ffeff4492feff8e94feffe695feffb4b3feff0cb5feffdcb6feff4ce9feffb6eafeffe0fbffff00000000b828000032300000a40a010064110100541e0100ce250100
+    scrollPos: {x: 0, y: 16}
+    m_SelectedIDs: 46fbffff
+    m_LastClickedID: -1210
+    m_ExpandedIDs: e0fbffff00000000c429000084300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -792,7 +801,11 @@ MonoBehaviour:
 =======
     m_Target: {x: -0.6062264, y: -0.003102102, z: 0.0023647123, w: -0.79528254}
     speed: 2
+<<<<<<< HEAD
     m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647123, w: -0.79528254}
+>>>>>>> origin/Morten
+=======
+    m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647125, w: -0.79528254}
 >>>>>>> origin/Morten
   m_Size:
     m_Target: 11.714125
