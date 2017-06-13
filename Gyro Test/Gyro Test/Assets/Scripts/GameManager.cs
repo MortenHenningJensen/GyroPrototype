@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("You can now finish the game!");
         }
     }
-
+    bool testbool = true;
     /// <summary>
     /// Finds all the Activation Plates in the game, and adds them to a list of Locked-plates..
     /// A Random, will then take one of the Locked-plates and make it accessible for the ball..
@@ -287,11 +287,15 @@ public class GameManager : MonoBehaviour
             switch (tog)
             {
                 case TypeOfGame.Normal:
-                    foreach (GameObject plate in actPlates)
-                    {
-                        plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
-                        plate.GetComponent<Plate>().ActivationPlateSetup(plate);
-                    }
+                    //if (testbool)
+                    //{
+                        foreach (GameObject plate in actPlates)
+                        {
+                            plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
+                            plate.GetComponent<Plate>().ActivationPlateSetup(plate);
+                        }
+                    //    testbool = false;
+                    //}
                     break;
 
                 case TypeOfGame.RandomActivation:

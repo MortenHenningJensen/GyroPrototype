@@ -318,7 +318,10 @@ public class Plate : MonoBehaviour
                 else if (this._actPlaState == ActivationPlateState.On)
                 {
                     ChangeLight();
-                    gm.LockedPlatesStatus();
+                    if (gm.tog != TypeOfGame.Normal)
+                    {
+                        gm.LockedPlatesStatus();
+                    }
                 }
             }
 
