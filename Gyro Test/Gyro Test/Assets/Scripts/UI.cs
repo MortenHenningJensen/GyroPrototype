@@ -16,6 +16,8 @@ public class UI : MonoBehaviour
     public Text _txtTimer;
     private LevelTracker lt;
 
+    public Canvas pauseMenu;
+
     // Use this for initialization
     void Start()
     {
@@ -57,5 +59,17 @@ public class UI : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeLeft - minutes * 60);
         string timeDisp = string.Format("{0:0}:{1:00}", minutes, seconds);
         _txtTimer.text = timeDisp;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.enabled = true;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseMenu.enabled = false;
     }
 }

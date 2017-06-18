@@ -232,10 +232,11 @@ public class Plate : MonoBehaviour
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.HolePlate:
-                CurrentMaterial = MatHole;
-                BoxCollider col = go.GetComponent<BoxCollider>();
-                col.size = new Vector3(0.25f, 0.25f, 0.25f);
+                //CurrentMaterial = MatHole;
+                //BoxCollider col = go.GetComponent<BoxCollider>();
+                //col.size = new Vector3(0.25f, 0.25f, 0.25f);
                 // this.GetComponent<BoxCollider>().enabled = false;
+                this.gameObject.SetActive(false);
                 break;
             case PlateType.LeaverPlate:
                 wallScript = GameObject.Find("Door").GetComponent<Wall>(); //Finds the WallScript, and assing it to the variable "gm"..
@@ -330,11 +331,11 @@ public class Plate : MonoBehaviour
                 gm.EndStatus();
             }
 
-            if (this.TypeNumb == PlateType.HolePlate)
-            {
-                GameObject go = GameObject.Find("LevelContainer");
-                go.SetActive(false);
-            }
+            //if (this.TypeNumb == PlateType.HolePlate)
+            //{
+            //    //GameObject go = GameObject.Find("LevelContainer");
+            //    //go.SetActive(false);
+            //}
 
             if (this.TypeNumb == PlateType.LeaverPlate)
             {
