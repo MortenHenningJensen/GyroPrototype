@@ -36,7 +36,27 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1146
+=======
+<<<<<<< HEAD
+    x: 0
+    y: 30
+    width: 1920
+<<<<<<< HEAD
+    height: 997
+  m_MinSize: {x: 950, y: 492}
+  m_MaxSize: {x: 10000, y: 10000}
+=======
+    height: 947
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
+  vertical: 0
+  controlID: 47
+>>>>>>> origin/Morten
+=======
+    x: 1147
+>>>>>>> origin/Skinke
     y: 0
     width: 384
     height: 573
@@ -47,6 +67,7 @@ MonoBehaviour:
   - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
+>>>>>>> origin/Morten
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -63,15 +84,31 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1153
     y: 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+    width: 1920
+    height: 30
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+  m_LastLoadedLayoutName: 
+=======
+    width: 389
+    height: 947
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 14}
+=======
     width: 377
     height: 374
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 15}
+>>>>>>> origin/Morten
   m_Panes:
   - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 0
+>>>>>>> origin/Morten
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,7 +156,11 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 110
+=======
+  controlID: 21
+>>>>>>> origin/Skinke
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +175,24 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1530
+=======
+<<<<<<< HEAD
+    x: 0
+<<<<<<< HEAD
+    y: 30
+    width: 1920
+    height: 947
+  m_MinSize: {x: 911, y: 442}
+  m_MaxSize: {x: 22006, y: 10021}
+  vertical: 0
+  controlID: 9
+=======
+=======
+    x: 1531
+>>>>>>> origin/Morten
+>>>>>>> origin/Skinke
     y: 0
     width: 390
     height: 947
@@ -145,7 +203,12 @@ MonoBehaviour:
   - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 0
+<<<<<<< HEAD
+>>>>>>> origin/Morten
+--- !u!114 &5
+=======
 --- !u!114 &7
+>>>>>>> origin/Morten
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -163,9 +226,15 @@ MonoBehaviour:
     y: 0
     width: 1153
     height: 374
+<<<<<<< HEAD
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
+=======
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 20}
+>>>>>>> origin/Skinke
   m_Panes:
   - {fileID: 20}
   - {fileID: 19}
@@ -190,11 +259,24 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
+    width: 908
+    height: 947
+  m_MinSize: {x: 202, y: 442}
+  m_MaxSize: {x: 4002, y: 8042}
+  vertical: 1
+  controlID: 10
+=======
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
+<<<<<<< HEAD
+>>>>>>> origin/Morten
+--- !u!114 &7
+=======
 --- !u!114 &9
+>>>>>>> origin/Morten
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -255,11 +337,47 @@ MonoBehaviour:
     y: 0
     width: 1530
     height: 947
+<<<<<<< HEAD
   m_MinSize: {x: 434, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
   controlID: 111
+=======
+<<<<<<< HEAD
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 13}
+  m_Panes:
+  - {fileID: 13}
+  m_Selected: 0
+  m_LastSelected: 0
+=======
+  m_MinSize: {x: 406, y: 492}
+  m_MaxSize: {x: 14006, y: 14042}
+  vertical: 1
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
+<<<<<<< HEAD
+  controlID: 48
+>>>>>>> origin/Morten
+--- !u!114 &10
+=======
+  controlID: 166
+=======
+  controlID: 22
+>>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+  controlID: 48
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
+>>>>>>> origin/Skinke
 --- !u!114 &12
+>>>>>>> origin/Morten
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -282,7 +400,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 49
+  controlID: 23
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,13 +415,38 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
     x: 0
+    y: 486
+    width: 908
+    height: 461
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
+=======
+    x: 379
+=======
+    x: 0
+>>>>>>> origin/Morten
     y: 0
     width: 1146
     height: 573
+<<<<<<< HEAD
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+<<<<<<< HEAD
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 16}
+>>>>>>> origin/Morten
+=======
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+>>>>>>> origin/Skinke
   m_ActualView: {fileID: 18}
+>>>>>>> origin/Morten
   m_Panes:
   - {fileID: 18}
   - {fileID: 14}
@@ -331,11 +474,49 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 910
+    y: 92
+    width: 246
+    height: 926
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 1875}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 2ef5ffffcaf6ffff26f8ffffe2fbffff00000000a25100001c590000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_ClientGUIView: {fileID: 7}
+    m_SearchString: 
+  m_ExpandedScenes:
+  - 1-7
+  m_CurrenRootInstanceID: 0
+  m_Locked: 0
+  m_CurrentSortingName: TransformSorting
+=======
     x: 468
     y: 181
     width: 973
     height: 501
+<<<<<<< HEAD
+>>>>>>> origin/Morten
+--- !u!114 &13
+=======
 --- !u!114 &15
+>>>>>>> origin/Morten
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -372,19 +553,62 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
     - Assets/Scenes/World 1
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
   - Assets/Scenes/World 1
+=======
+    - Assets/Scripts
+  m_ViewMode: 1
+  m_StartGridSize: 16
+  m_LastFolders:
+  - Assets/Scripts
+>>>>>>> origin/Skinke
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\GYRO\Gyro Test\Gyro Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 40250000
     m_LastClickedID: 9536
     m_ExpandedIDs: 00000000e424000084250000ca250000cc250000ffffff7f
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    m_SelectedIDs: 34250000
+    m_LastClickedID: 9524
+    m_ExpandedIDs: 00000000da24000074250000ba25000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: c4250000
+    m_LastClickedID: 9668
+    m_ExpandedIDs: 00000000e22400007c250000c2250000c4250000ffffff7f
+>>>>>>> origin/Morten
+=======
+    m_SelectedIDs: 3e250000
+    m_LastClickedID: 9534
+=======
+    m_SelectedIDs: aa260000
+    m_LastClickedID: 9898
+>>>>>>> origin/Morten
+    m_ExpandedIDs: 00000000e224000080250000c6250000c8250000ffffff7f
+>>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_SelectedIDs: dac00100
+    m_LastClickedID: 114906
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000ffffff7f
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
+>>>>>>> origin/Skinke
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +636,29 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000e424000084250000ca250000cc250000
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000da24000074250000ba250000
+=======
+    m_ExpandedIDs: 00000000e22400007c250000c2250000c4250000
+>>>>>>> origin/Morten
+=======
+    m_ExpandedIDs: 00000000e224000080250000c6250000c8250000
+>>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_ExpandedIDs: 00000000e624000084250000ca250000cc250000
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
+>>>>>>> origin/Skinke
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -443,20 +689,29 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
+<<<<<<< HEAD
       m_Name: 1-6
       m_OriginalName: 1-6
+=======
+      m_Name: 
+      m_OriginalName: 
+>>>>>>> origin/Skinke
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< HEAD
       m_UserData: 9944
+=======
+      m_UserData: 0
+>>>>>>> origin/Skinke
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 3}
+      m_ClientGUIView: {fileID: 7}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -527,10 +782,17 @@ MonoBehaviour:
     width: 380
     height: 552
   m_TreeViewState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 16250000
     m_LastClickedID: 0
     m_ExpandedIDs: e8fafdffc4fdfdff14fefdff8600feffdc00feff8a02feff8203feff4806feff4a06feffc008feff1e09feff360bfeffe60bfefff60dfeffae0efeffca11feffda11feff0c15feff0e15feffde17feffc01afeff821efeff5021feff2624feff2627feff3027feffb228feff942bfeff9e2efeff1a2ffeffac4efeff4a4ffeff1679feff4879feff1a9bfeffdcb2feff6ef0feff820affff100cffff6c16ffffc424ffff4033ffff4635ffff1236ffffe236ffffba4fffff9c50ffff6a51ffff7cf4ffffd6f5ffff6ef7fffff8f8ffffe0fbffff00000000025d000058fc0000ae1501009c3901000a3d0100d45e01005c82010082a30100fcaa0100fac90100
+=======
+    scrollPos: {x: 0, y: 16}
+    m_SelectedIDs: 46fbffff
+    m_LastClickedID: -1210
+    m_ExpandedIDs: e0fbffff00000000c429000084300000
+>>>>>>> origin/Skinke
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -546,10 +808,10 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 2}
+      m_ClientGUIView: {fileID: 0}
     m_SearchString: 
   m_ExpandedScenes:
-  - 1-9
+  - 1-4
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -580,14 +842,48 @@ MonoBehaviour:
     width: 1144
     height: 552
   m_SceneLighting: 1
+<<<<<<< HEAD
   lastFramingTime: 2163.6807958147906
+=======
+  lastFramingTime: 0
+>>>>>>> origin/Skinke
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 664.6969, y: 254.73216, z: -315.97287}
     speed: 2
     m_Value: {x: 664.6969, y: 254.73216, z: -315.97287}
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
+<<<<<<< HEAD
+    m_Target: {x: -3.539396, y: -3.016757, z: 6.269285}
+    speed: 2
+    m_Value: {x: -3.539396, y: -3.016757, z: 6.269285}
+=======
+    m_Target: {x: -3.0672798, y: 5.622923, z: -1.5866773}
+    speed: 2
+    m_Value: {x: -3.0672798, y: 5.622923, z: -1.5866773}
+>>>>>>> origin/Morten
+=======
+    m_Target: {x: -4.3556147, y: 1.853898, z: -0.4023502}
+    speed: 2
+    m_Value: {x: -4.3556147, y: 1.853898, z: -0.4023502}
+>>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_Target: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+    speed: 2
+    m_Value: {x: -1.7525718, y: 2.1807518, z: -3.4734735}
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
+>>>>>>> origin/Skinke
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -610,6 +906,7 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: 0.14671138, y: -0.031161055, z: 0.004624579, w: 0.9886776}
     speed: 2
     m_Value: {x: 0.14671138, y: -0.031161055, z: 0.004624579, w: 0.9886776}
@@ -617,6 +914,43 @@ MonoBehaviour:
     m_Target: 37.866173
     speed: 2
     m_Value: 37.866173
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/Laisen
+<<<<<<< HEAD
+<<<<<<< HEAD
+    m_Target: {x: -0.40664658, y: -0.014237694, z: 0.0063396366, w: -0.9134526}
+    speed: 2
+    m_Value: {x: -0.40664658, y: -0.014237694, z: 0.0063396366, w: -0.9134526}
+=======
+    m_Target: {x: -0.5574311, y: 0.006722574, z: -0.004513799, w: -0.8301838}
+    speed: 2
+    m_Value: {x: -0.55743104, y: 0.0067225737, z: -0.004513799, w: -0.83018374}
+>>>>>>> origin/Morten
+=======
+    m_Target: {x: -0.6062264, y: -0.003102102, z: 0.0023647123, w: -0.79528254}
+    speed: 2
+<<<<<<< HEAD
+    m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647123, w: -0.79528254}
+>>>>>>> origin/Morten
+=======
+    m_Value: {x: -0.6062264, y: -0.003102102, z: 0.0023647125, w: -0.79528254}
+>>>>>>> origin/Morten
+<<<<<<< HEAD
+=======
+=======
+    m_Target: {x: -0.4284826, y: -0.0008135675, z: 0.0003857416, w: -0.90354955}
+    speed: 2
+    m_Value: {x: -0.42848262, y: -0.00081356755, z: 0.00038574162, w: -0.9035496}
+>>>>>>> origin/master
+>>>>>>> origin/Laisen
+  m_Size:
+    m_Target: 11.714125
+    speed: 2
+    m_Value: 11.714125
+>>>>>>> origin/Skinke
   m_Ortho:
     m_Target: 0
     speed: 2
