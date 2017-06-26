@@ -6,7 +6,7 @@ public class Plate : MonoBehaviour
 {
 
     #region Fields
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5 };
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5, CheckPoint = 6 };
     public enum ActivationPlateState { Off = 1, On = 2 };
 
     private GameManager gm;
@@ -244,6 +244,9 @@ public class Plate : MonoBehaviour
                 wallScript.WallActive = false; //Sets the wallActive to false, so it is closed..
                 gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
                 break;
+            case PlateType.CheckPoint:
+               // CurrentMaterial = MatCheck;
+                break;
             default:
                 break;
         }
@@ -331,11 +334,15 @@ public class Plate : MonoBehaviour
                 gm.EndStatus();
             }
 
-            //if (this.TypeNumb == PlateType.HolePlate)
-            //{
-            //    //GameObject go = GameObject.Find("LevelContainer");
-            //    //go.SetActive(false);
-            //}
+            if (this.TypeNumb == PlateType.CheckPoint)
+            {
+                //LAV LISTE MED DE PLADER DER ER AKTIVERET
+                //NÅR MAN KØRER SPILLET IGEN, SKAL DE PLADER DER VAR AKTIVERET BLIVE AKTIVERET IGEN
+                //NÅR MAN DØR, SKAL BOLDEN STARTE OVEN PÅ DET CHECKPOINT MAN ER NÅET TIL
+                //MÅSKE BARE LAVE CHECKPOINT BANER, HVOR DER MED ACTIVATION IKKE ER NØDVENDIGT, FOR AT GØRE DET MEGET NEMMERE FOR OS?
+                //GameObject go = GameObject.Find("LevelContainer");
+                //go.SetActive(false);
+            }
 
             if (this.TypeNumb == PlateType.LeaverPlate)
             {

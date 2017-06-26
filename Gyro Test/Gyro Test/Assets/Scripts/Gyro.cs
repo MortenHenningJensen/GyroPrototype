@@ -118,6 +118,11 @@ public class Gyro : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
     }
 
     public IEnumerator InvertControls()
@@ -139,6 +144,15 @@ public class Gyro : MonoBehaviour
         type = typetorotate.level;
         yield return new WaitForSeconds(3);
         type = typetorotate.ball;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Wall")
+        {
+            Handheld.Vibrate();
+            Debug.Log("VIBRATE");
+        }
     }
 
 }
