@@ -11,11 +11,17 @@ public class LevelTracker : MonoBehaviour
     private Canvas gameEnd;
     public bool gameEnded;
     public static bool findOnce;
+    public Vector3 startPos;
+    public bool hasCheckPoint;
+
+    [SerializeField]
+    public List<GameObject> activatedPlates; //List of all plates that has been activated
+
 
     void Awake()
     {
         findOnce = false;
-
+        hasCheckPoint = false;
         if (instanceRef == null)
         {
             instanceRef = this;
@@ -41,6 +47,7 @@ public class LevelTracker : MonoBehaviour
             gameEnded = true;
             gameEnd.enabled = true;
         }
+
     }
 
     public void AddDeath()
@@ -48,4 +55,5 @@ public class LevelTracker : MonoBehaviour
         Debug.Log("ADD DEATH");
         deathCounter++;
     }
+
 }

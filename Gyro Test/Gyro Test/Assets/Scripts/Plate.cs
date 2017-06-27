@@ -11,6 +11,7 @@ public class Plate : MonoBehaviour
 
     private GameManager gm;
     private Wall wallScript;
+    private LevelTracker lt;
 
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
@@ -39,6 +40,10 @@ public class Plate : MonoBehaviour
     private Material _matHole;
     [SerializeField]
     private Material _matActPlateLocked;
+    [SerializeField]
+    private Material _matCheckOn;
+    [SerializeField]
+    private Material _matCheckOff;
 
     #endregion
 
@@ -208,6 +213,7 @@ public class Plate : MonoBehaviour
     /// </summary>
     public void SetupPlates(GameObject go)
     {
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
         Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
         Rend.enabled = true; //Enables the rendere, so we can change it's material..
@@ -232,10 +238,6 @@ public class Plate : MonoBehaviour
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.HolePlate:
-                //CurrentMaterial = MatHole;
-                //BoxCollider col = go.GetComponent<BoxCollider>();
-                //col.size = new Vector3(0.25f, 0.25f, 0.25f);
-                // this.GetComponent<BoxCollider>().enabled = false;
                 this.gameObject.SetActive(false);
                 break;
             case PlateType.LeaverPlate:
@@ -245,7 +247,14 @@ public class Plate : MonoBehaviour
                 gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
                 break;
             case PlateType.CheckPoint:
-               // CurrentMaterial = MatCheck;
+                if (!lt.hasCheckPoint)
+                {
+                    CurrentMaterial = _matCheckOff;
+                }
+                else
+                {
+                    CurrentMaterial = _matCheckOn;
+                }
                 break;
             default:
                 break;
@@ -336,12 +345,18 @@ public class Plate : MonoBehaviour
 
             if (this.TypeNumb == PlateType.CheckPoint)
             {
-                //LAV LISTE MED DE PLADER DER ER AKTIVERET
+                lt.startPos = this.transform.position;
+                CurrentMaterial = _matCheckOn;
+
+                ///FEJL HER MED ACTIVATION, DER KOMMER EN TOM GO PÅ LISTEN, SKAL LIGE FIXES
+                foreach (GameObject obj in gm.ActPlates)
+                {
+                    if (obj.GetComponent<Plate>()._actPlaState == ActivationPlateState.On)
+                    {
+                        lt.activatedPlates.Add(obj);
+                    }
+                }
                 //NÅR MAN KØRER SPILLET IGEN, SKAL DE PLADER DER VAR AKTIVERET BLIVE AKTIVERET IGEN
-                //NÅR MAN DØR, SKAL BOLDEN STARTE OVEN PÅ DET CHECKPOINT MAN ER NÅET TIL
-                //MÅSKE BARE LAVE CHECKPOINT BANER, HVOR DER MED ACTIVATION IKKE ER NØDVENDIGT, FOR AT GØRE DET MEGET NEMMERE FOR OS?
-                //GameObject go = GameObject.Find("LevelContainer");
-                //go.SetActive(false);
             }
 
             if (this.TypeNumb == PlateType.LeaverPlate)

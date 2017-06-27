@@ -213,6 +213,9 @@ public class GameManager : MonoBehaviour
         }
 
         LockedPlatesStatus();
+
+        GameObject ball = GameObject.Find("Player");
+        ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 5, lt.startPos.z);
     }
 
     // Update is called once per frame
@@ -284,16 +287,24 @@ public class GameManager : MonoBehaviour
                 GetRandNumber();
             }
 
+            if (lt.hasCheckPoint)
+            {
+                foreach (GameObject obj in lt.activatedPlates)
+                {
+                    obj.GetComponent<Plate>().ChangeLight();
+                }
+            }
+
             switch (tog)
             {
                 case TypeOfGame.Normal:
                     //if (testbool)
                     //{
-                        foreach (GameObject plate in actPlates)
-                        {
-                            plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
-                            plate.GetComponent<Plate>().ActivationPlateSetup(plate);
-                        }
+                    foreach (GameObject plate in actPlates)
+                    {
+                        plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
+                        plate.GetComponent<Plate>().ActivationPlateSetup(plate);
+                    }
                     //    testbool = false;
                     //}
                     break;
@@ -334,6 +345,7 @@ public class GameManager : MonoBehaviour
 
             //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
             //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+
         }
     }
 
