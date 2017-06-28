@@ -287,26 +287,31 @@ public class GameManager : MonoBehaviour
                 GetRandNumber();
             }
 
+            //DET HER KODE BLIVER IKKE KØRT, DNO HVORFOR DEN IKKE KOMMER IND I FOREACH, MÅSKE FORDI DER KUN ER 1 TING PÅ LISTEN?
             if (lt.hasCheckPoint)
             {
+                Debug.Log("PREPARE TO GO IN");
                 foreach (GameObject obj in lt.activatedPlates)
                 {
-                    obj.GetComponent<Plate>().ChangeLight();
+                    Debug.Log(lt.activatedPlates.Count);
+                    if (obj != null)
+                    {
+                        Debug.Log("WE GOING IN");
+                        obj.GetComponent<Plate>().ActivationPlateSetup(obj);
+                        obj.GetComponent<Plate>().ChangeLight();
+                    }
                 }
             }
 
             switch (tog)
             {
                 case TypeOfGame.Normal:
-                    //if (testbool)
-                    //{
                     foreach (GameObject plate in actPlates)
                     {
                         plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
                         plate.GetComponent<Plate>().ActivationPlateSetup(plate);
                     }
-                    //    testbool = false;
-                    //}
+
                     break;
 
                 case TypeOfGame.RandomActivation:

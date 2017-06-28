@@ -287,7 +287,7 @@ public class Plate : MonoBehaviour
 
             Rend.material = CurrentMaterial; //Opdates the current Material..
 
-            Debug.Log("Plate is now " + _light);
+           // Debug.Log("Plate is now " + _light);
 
             gm.WinningCondition(); //Checks if we can win...
         }
@@ -299,11 +299,11 @@ public class Plate : MonoBehaviour
         {
             case ActivationPlateState.Off:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateLocked; //Red-Cross Material
-                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             case ActivationPlateState.On:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateOff; //Red material..
-                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             default:
                 break;
@@ -318,7 +318,7 @@ public class Plate : MonoBehaviour
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
     {
-        Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
+       // Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
@@ -345,6 +345,7 @@ public class Plate : MonoBehaviour
 
             if (this.TypeNumb == PlateType.CheckPoint)
             {
+                lt.hasCheckPoint = true;
                 lt.startPos = this.transform.position;
                 CurrentMaterial = _matCheckOn;
 
