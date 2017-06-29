@@ -352,7 +352,6 @@ public class Plate : MonoBehaviour
                 CurrentMaterial = _matCheckOn;
                 Rend.material = CurrentMaterial;
 
-                /////FEJL HER MED ACTIVATION, DER KOMMER EN TOM GO PÅ LISTEN, SKAL LIGE FIXES
                 foreach (GameObject obj in gm.ActPlates)
                 {
                     if (obj.GetComponent<Plate>()._actPlaState == ActivationPlateState.On)
@@ -363,7 +362,6 @@ public class Plate : MonoBehaviour
                         }
                     }
                 }
-                ////NÅR MAN KØRER SPILLET IGEN, SKAL DE PLADER DER VAR AKTIVERET BLIVE AKTIVERET IGEN
             }
 
             if (this.TypeNumb == PlateType.LeaverPlate)

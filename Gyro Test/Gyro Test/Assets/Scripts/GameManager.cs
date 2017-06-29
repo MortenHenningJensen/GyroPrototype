@@ -228,9 +228,7 @@ public class GameManager : MonoBehaviour
             if (lt.platesToAdd[i] != null)
             {
                 GameObject go = GameObject.Find(lt.platesToAdd[i]);
-                //Tror det er her den skal skifte farve, men den ikke gør det? kig evt Plate 360, hvis den linje bliver slået fra, lyser alt op, men det får lys?
                 go.GetComponent<Plate>().ChangeLight();
-                go.GetComponent<Plate>().ActivationPlateSetup(go);
             }
 
         }
