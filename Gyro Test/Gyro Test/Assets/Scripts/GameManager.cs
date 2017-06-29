@@ -212,12 +212,29 @@ public class GameManager : MonoBehaviour
             WinningCondition();
         }
 
+
         LockedPlatesStatus();
+        CheckPointContiue();
 
         GameObject ball = GameObject.Find("Player");
         ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 5, lt.startPos.z);
     }
 
+
+    public void CheckPointContiue()
+    {
+        for (int i = 0; i < lt.platesToAdd.Length; i++)
+        {
+            if (lt.platesToAdd[i] != null)
+            {
+                GameObject go = GameObject.Find(lt.platesToAdd[i]);
+                //Tror det er her den skal skifte farve, men den ikke gør det? kig evt Plate 360, hvis den linje bliver slået fra, lyser alt op, men det får lys?
+                go.GetComponent<Plate>().ChangeLight();
+                go.GetComponent<Plate>().ActivationPlateSetup(go);
+            }
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -285,22 +302,6 @@ public class GameManager : MonoBehaviour
             if (!_isActive)
             {
                 GetRandNumber();
-            }
-
-            //DET HER KODE BLIVER IKKE KØRT, DNO HVORFOR DEN IKKE KOMMER IND I FOREACH, MÅSKE FORDI DER KUN ER 1 TING PÅ LISTEN?
-            if (lt.hasCheckPoint)
-            {
-                Debug.Log("PREPARE TO GO IN");
-                foreach (GameObject obj in lt.activatedPlates)
-                {
-                    Debug.Log(lt.activatedPlates.Count);
-                    if (obj != null)
-                    {
-                        Debug.Log("WE GOING IN");
-                        obj.GetComponent<Plate>().ActivationPlateSetup(obj);
-                        obj.GetComponent<Plate>().ChangeLight();
-                    }
-                }
             }
 
             switch (tog)
