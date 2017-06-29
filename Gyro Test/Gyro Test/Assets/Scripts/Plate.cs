@@ -6,11 +6,12 @@ public class Plate : MonoBehaviour
 {
 
     #region Fields
-    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5 };
+    public enum PlateType { NormalPlate = 1, ActivationPlate = 2, GoalPlate = 3, HolePlate = 4, LeaverPlate = 5, CheckPoint = 6 };
     public enum ActivationPlateState { Off = 1, On = 2 };
 
     private GameManager gm;
     private Wall wallScript;
+    private LevelTracker lt;
 
     [SerializeField]
     private PlateType _typeNumb; //Type to choose from, in the Inspector
@@ -39,6 +40,10 @@ public class Plate : MonoBehaviour
     private Material _matHole;
     [SerializeField]
     private Material _matActPlateLocked;
+    [SerializeField]
+    private Material _matCheckOn;
+    [SerializeField]
+    private Material _matCheckOff;
 
     #endregion
 
@@ -208,6 +213,7 @@ public class Plate : MonoBehaviour
     /// </summary>
     public void SetupPlates(GameObject go)
     {
+        lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>(); //Finds the GameManager, and assing it to the variable "gm"..
         Rend = this.GetComponent<Renderer>(); //Finds the plates Rendere..
         Rend.enabled = true; //Enables the rendere, so we can change it's material..
@@ -232,10 +238,6 @@ public class Plate : MonoBehaviour
                 gm.GoalPlate.Add(go); //Adds the Gameobject to a list, which is used in the GameManager..
                 break;
             case PlateType.HolePlate:
-                //CurrentMaterial = MatHole;
-                //BoxCollider col = go.GetComponent<BoxCollider>();
-                //col.size = new Vector3(0.25f, 0.25f, 0.25f);
-                // this.GetComponent<BoxCollider>().enabled = false;
                 this.gameObject.SetActive(false);
                 break;
             case PlateType.LeaverPlate:
@@ -243,6 +245,16 @@ public class Plate : MonoBehaviour
                 CurrentMaterial = wallScript.Material2; //Brown material..
                 wallScript.WallActive = false; //Sets the wallActive to false, so it is closed..
                 gm.DoorWall.Add(go); //Adds the Gameobject to a list, which is used in GameManager..
+                break;
+            case PlateType.CheckPoint:
+                if (!lt.hasCheckPoint)
+                {
+                    CurrentMaterial = _matCheckOff;
+                }
+                else
+                {
+                    CurrentMaterial = _matCheckOn;
+                }
                 break;
             default:
                 break;
@@ -275,7 +287,7 @@ public class Plate : MonoBehaviour
 
             Rend.material = CurrentMaterial; //Opdates the current Material..
 
-            Debug.Log("Plate is now " + _light);
+           // Debug.Log("Plate is now " + _light);
 
             gm.WinningCondition(); //Checks if we can win...
         }
@@ -287,11 +299,11 @@ public class Plate : MonoBehaviour
         {
             case ActivationPlateState.Off:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateLocked; //Red-Cross Material
-                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             case ActivationPlateState.On:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateOff; //Red material..
-                Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             default:
                 break;
@@ -306,7 +318,7 @@ public class Plate : MonoBehaviour
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
     {
-        Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
+       // Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
@@ -328,11 +340,22 @@ public class Plate : MonoBehaviour
                 gm.EndStatus();
             }
 
-            //if (this.TypeNumb == PlateType.HolePlate)
-            //{
-            //    //GameObject go = GameObject.Find("LevelContainer");
-            //    //go.SetActive(false);
-            //}
+            if (this.TypeNumb == PlateType.CheckPoint)
+            {
+                lt.hasCheckPoint = true;
+                lt.startPos = this.transform.position;
+                CurrentMaterial = _matCheckOn;
+
+                ///FEJL HER MED ACTIVATION, DER KOMMER EN TOM GO PÅ LISTEN, SKAL LIGE FIXES
+                foreach (GameObject obj in gm.ActPlates)
+                {
+                    if (obj.GetComponent<Plate>()._actPlaState == ActivationPlateState.On)
+                    {
+                        lt.activatedPlates.Add(obj);
+                    }
+                }
+                //NÅR MAN KØRER SPILLET IGEN, SKAL DE PLADER DER VAR AKTIVERET BLIVE AKTIVERET IGEN
+            }
 
             if (this.TypeNumb == PlateType.LeaverPlate)
             {

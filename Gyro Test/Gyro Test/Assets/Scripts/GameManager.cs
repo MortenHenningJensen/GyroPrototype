@@ -213,6 +213,9 @@ public class GameManager : MonoBehaviour
         }
 
         LockedPlatesStatus();
+
+        GameObject ball = GameObject.Find("Player");
+        ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 5, lt.startPos.z);
     }
 
     // Update is called once per frame
@@ -243,7 +246,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("You can now finish the game!");
         }
     }
-
+    bool testbool = true;
     /// <summary>
     /// Finds all the Activation Plates in the game, and adds them to a list of Locked-plates..
     /// A Random, will then take one of the Locked-plates and make it accessible for the ball..
@@ -284,6 +287,22 @@ public class GameManager : MonoBehaviour
                 GetRandNumber();
             }
 
+            //DET HER KODE BLIVER IKKE KØRT, DNO HVORFOR DEN IKKE KOMMER IND I FOREACH, MÅSKE FORDI DER KUN ER 1 TING PÅ LISTEN?
+            if (lt.hasCheckPoint)
+            {
+                Debug.Log("PREPARE TO GO IN");
+                foreach (GameObject obj in lt.activatedPlates)
+                {
+                    Debug.Log(lt.activatedPlates.Count);
+                    if (obj != null)
+                    {
+                        Debug.Log("WE GOING IN");
+                        obj.GetComponent<Plate>().ActivationPlateSetup(obj);
+                        obj.GetComponent<Plate>().ChangeLight();
+                    }
+                }
+            }
+
             switch (tog)
             {
                 case TypeOfGame.Normal:
@@ -292,6 +311,7 @@ public class GameManager : MonoBehaviour
                         plate.GetComponent<Plate>().ActPlaState = Plate.ActivationPlateState.On;
                         plate.GetComponent<Plate>().ActivationPlateSetup(plate);
                     }
+
                     break;
 
                 case TypeOfGame.RandomActivation:
@@ -330,6 +350,7 @@ public class GameManager : MonoBehaviour
 
             //pScript.ActivationPlateSetup(lockedPlates[_rand]); //Runs the ActivationPlateSetup_script on the random LockedPlate..
             //lockedPlates.RemoveAt(_rand); //Removes the selected LockedPlate from the LockedPlates-List..
+
         }
     }
 
