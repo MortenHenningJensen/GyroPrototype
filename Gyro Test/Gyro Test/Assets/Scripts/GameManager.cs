@@ -269,11 +269,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void LockedPlatesStatus()
     {
-        Debug.Log("Im running!");
-        Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+        //Debug.Log("Im running!");
+        //Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
         if (lockedPlates.Count == 0)
         {
-            Debug.Log("LockedPlates-list is empty!");
+            //Debug.Log("LockedPlates-list is empty!");
             switch (tog)
             {
                 case TypeOfGame.RandomActivation:
@@ -283,15 +283,15 @@ public class GameManager : MonoBehaviour
                     lockedPlates = listActivationOrder;
                     break;
             }
-            foreach (GameObject go in ActPlates)
-            {
-                Debug.Log("Plates in ActPlates: " + go);
-            }
-            foreach (GameObject go in lockedPlates)
-            {
-                Debug.Log("Plates in lockedPlates: " + go);
-            }
-            Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+            //foreach (GameObject go in ActPlates)
+            //{
+            //    Debug.Log("Plates in ActPlates: " + go);
+            //}
+            //foreach (GameObject go in lockedPlates)
+            //{
+            //    Debug.Log("Plates in lockedPlates: " + go);
+            //}
+            //Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
         }
         //_rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
         //Debug.Log(_rand);
@@ -363,6 +363,8 @@ public class GameManager : MonoBehaviour
     {
         gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
         gameEnd.enabled = true;
+
+        //Kør metode på GameControl?
 
         Text endStatusText = GameObject.Find("Game Over").GetComponent<Text>();
         endStatusText.text = "YOU ROLL";

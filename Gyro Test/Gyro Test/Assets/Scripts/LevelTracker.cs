@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelTracker : MonoBehaviour
 {
-
     [SerializeField]
     public int deathCounter;
     private static LevelTracker instanceRef;
@@ -26,6 +25,7 @@ public class LevelTracker : MonoBehaviour
         platesToAdd = new string[10];
         findOnce = false;
         hasCheckPoint = false;
+
         if (instanceRef == null)
         {
             instanceRef = this;
