@@ -359,6 +359,12 @@ public class GameManager : MonoBehaviour
         _rand = Random.Range(0, lockedPlates.Count - 1); //Finds a random LockedPlate on the list.
     }
 
+    [Header("Star Requirement")]
+    public int oneStar;
+    public int twoStar;
+    public int threeStar;
+    private int starsToGive;
+
     public void EndStatus()
     {
         gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
@@ -370,6 +376,32 @@ public class GameManager : MonoBehaviour
         endStatusText.text = "YOU ROLL";
 
         lt.gameEnded = true;
+
+        UI _ui = GameObject.Find("UI").GetComponent<UI>();
+
+        GameEndScreen end = GameObject.Find("EndScreen").GetComponent<GameEndScreen>();
+        end.levelCompleted = true;
+
+        if (_ui.timeLeft < oneStar)
+        {
+            starsToGive = 1;
+        }
+        else if(_ui.timeLeft < twoStar)
+        {
+            starsToGive = 2;
+        }
+        else if(_ui.timeLeft < threeStar)
+        {
+            starsToGive = 3;
+        }
+        else if (_ui.timeLeft > threeStar)
+        {
+            starsToGive = 0;
+        }
+
+        end.starsUnlocked = starsToGive;
+
+
 
         //1. Load animation for switching levels
         //2. Pop-up with status screen (Time, Re-tries)

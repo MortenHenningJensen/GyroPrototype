@@ -10,7 +10,7 @@ public class UI : MonoBehaviour
 
     int currentLevel = 1;
     [SerializeField]
-    float timeLeft = 5;
+    public float timeLeft = 5;
     string timeDisp;
     bool gameOver;
     public Text _txtTimer;
