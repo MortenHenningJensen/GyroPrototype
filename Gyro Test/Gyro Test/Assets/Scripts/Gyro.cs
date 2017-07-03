@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum typetorotate { level, ball }
 public enum controltype { normal, inverted }
@@ -29,6 +30,8 @@ public class Gyro : MonoBehaviour
     public float tiltAngle = 30.0F;
     [Range(5, 100)]
     public float speed;
+    public float jumpForce;
+    public bool isGrounded;
     [Space(5)]
 
     [Header("PowerUps")]
@@ -50,6 +53,8 @@ public class Gyro : MonoBehaviour
             rb = GetComponent<Rigidbody>();
             type = typetorotate.ball;
             speed = 20f;
+            isGrounded = true;
+            jumpForce = 200f;
         }
         else
         {
@@ -95,6 +100,7 @@ public class Gyro : MonoBehaviour
                     initialOrientationY = Mathf.Clamp(initialOrientationY, minYtilt, maxYtilt);
                     initialOrientationX = Mathf.Clamp(initialOrientationX, minXtilt, maxYtilt);
                     rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+
                     //rb.transform.Translate(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
                     Debug.DrawRay(rb.transform.position + Vector3.up, Input.acceleration, Color.red);
                     break;
@@ -146,12 +152,28 @@ public class Gyro : MonoBehaviour
         type = typetorotate.ball;
     }
 
+    public void Jump()
+    {
+        Debug.Log("TEST");
+        if (isGrounded)
+        {
+            Debug.Log("JUMP");
+            rb.AddForce(Vector3.up * jumpForce);
+            isGrounded = false;
+        }
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Wall")
         {
             Handheld.Vibrate();
             Debug.Log("VIBRATE");
+        }
+
+        if (collision.transform.tag == "Plate")
+        {
+            isGrounded = true;
         }
     }
 
