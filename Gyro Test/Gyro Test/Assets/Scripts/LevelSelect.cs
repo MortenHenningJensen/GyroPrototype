@@ -12,6 +12,8 @@ public class LevelSelect : MonoBehaviour
     [SerializeField]
     public List<GameObject> levels;
 
+    public string firstLevelUnlocked;
+
     private GameObject[] levelstofind; //Finds all Gameobjects with tag "Plate"
 
 
@@ -21,10 +23,17 @@ public class LevelSelect : MonoBehaviour
         {
             SceneManager.LoadScene(enterWorld);
         }
+
+        if (PlayerPrefs.GetInt("Hidden " + enterWorld) >= 1)
+        {
+            SceneManager.LoadScene(enterWorld);
+        }
     }
 
     void Start()
     {
+        PlayerPrefs.SetInt(firstLevelUnlocked, 1);
+
         levels = new List<GameObject>();
 
         levelstofind = GameObject.FindGameObjectsWithTag("LevelSelecter");
@@ -42,7 +51,7 @@ public class LevelSelect : MonoBehaviour
         foreach (GameObject item in levels)
         {
             // Debug.Log(item.GetComponentInChildren<Text>().text + " " + PlayerPrefs.GetInt("lvl " + item.GetComponentInChildren<Text>().text));
-            if (PlayerPrefs.GetInt("lvl " + item.GetComponentInChildren<Text>().text) != 0)
+            if (PlayerPrefs.GetInt("lvl " + item.transform.FindChild("Text").GetComponent<Text>().text) != 0)
             {
                 // Debug.Log("TRUE");
                 item.GetComponent<Button>().interactable = true;
@@ -54,6 +63,33 @@ public class LevelSelect : MonoBehaviour
                 //item.IsInteractable();
             }
         }
+
+        foreach (GameObject item in levels)
+        {
+            Debug.Log(PlayerPrefs.GetInt("Level " + item.transform.FindChild("Text").GetComponent<Text>().text));
+            ////Debug.Log(PlayerPrefs.GetInt("Level " + item.transform.FindChild("Text").GetComponent<Text>().text));
+            //if (PlayerPrefs.GetInt("Level " + item.transform.FindChild("Text").GetComponent<Text>().text) >= 0)
+            //{
+            item.transform.FindChild("StarsText").GetComponent<Text>().text = PlayerPrefs.GetInt("Level " + item.transform.FindChild("Text").GetComponent<Text>().text).ToString() + " / 3 Stars";
+            //}
+        }
+
+        GameObject hidden = GameObject.FindGameObjectWithTag("LevelHidden");
+        Debug.Log(hidden.transform.FindChild("Text").GetComponent<Text>().text);
+        if (PlayerPrefs.GetInt("Hidden " + hidden.transform.FindChild("Text").GetComponent<Text>().text) == 1)
+        {
+            hidden.SetActive(true);
+            hidden.transform.FindChild("StarsText").GetComponent<Text>().text = PlayerPrefs.GetInt("Level " + hidden.transform.FindChild("Text").GetComponent<Text>().text).ToString() + " / 3 Stars";
+
+        }
+        else
+        {
+            hidden.SetActive(false);
+        }
     }
 
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

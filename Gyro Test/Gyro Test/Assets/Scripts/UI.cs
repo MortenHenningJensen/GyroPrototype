@@ -9,8 +9,7 @@ public class UI : MonoBehaviour
 {
 
     int currentLevel = 1;
-    [SerializeField]
-    public float timeLeft = 5;
+    public float timeLeft;
     string timeDisp;
     bool gameOver;
     public Text _txtTimer;
@@ -22,6 +21,7 @@ public class UI : MonoBehaviour
     void Start()
     {
         gameOver = false;
+        timeLeft = 0;
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
     }
 
@@ -33,12 +33,12 @@ public class UI : MonoBehaviour
             timeDisp = timeLeft.ToString();
             if (gameOver == false)
             {
-                timeLeft -= Time.deltaTime;
+                timeLeft += Time.deltaTime;
             }
-            if (timeLeft < 1 && gameOver == false)
-            {
-                GameOver();
-            }
+            //if (timeLeft < 1 && gameOver == false)
+            //{
+            //    GameOver();
+            //}
 
             GameObject.Find("CurrentLevel").GetComponent<Text>().text = currentLevel.ToString();
 

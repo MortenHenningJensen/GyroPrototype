@@ -25,7 +25,8 @@ public class GameEndScreen : MonoBehaviour
 
         if (levelCompleted)
         {
-            SaveProgress(SceneManager.GetActiveScene().ToString(), starsUnlocked);
+            Debug.Log("Saving...");
+            SaveProgress(SceneManager.GetActiveScene().name.ToString(), starsUnlocked);
         }
         //control.StartGame("LevelSelecter");
 
@@ -43,7 +44,7 @@ public class GameEndScreen : MonoBehaviour
 
         if (levelCompleted)
         {
-            SaveProgress(SceneManager.GetActiveScene().ToString(), starsUnlocked);
+            SaveProgress(SceneManager.GetActiveScene().name.ToString(), starsUnlocked);
         }
     }
 
@@ -51,7 +52,6 @@ public class GameEndScreen : MonoBehaviour
     {
         PlayerPrefs.SetInt("Level " + level, stars);
         PlayerPrefs.SetInt("lvl " + level, 1);
-
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum TypeOfGame { Normal, RandomActivation, ListActivation }
@@ -382,26 +383,27 @@ public class GameManager : MonoBehaviour
         GameEndScreen end = GameObject.Find("EndScreen").GetComponent<GameEndScreen>();
         end.levelCompleted = true;
 
-        if (_ui.timeLeft < oneStar)
+        if (_ui.timeLeft < threeStar)
         {
-            starsToGive = 1;
+            starsToGive = 3;
         }
         else if(_ui.timeLeft < twoStar)
         {
             starsToGive = 2;
         }
-        else if(_ui.timeLeft < threeStar)
+        else if(_ui.timeLeft < oneStar)
         {
-            starsToGive = 3;
+            starsToGive = 1;
         }
-        else if (_ui.timeLeft > threeStar)
+        else if (_ui.timeLeft > oneStar)
         {
             starsToGive = 0;
         }
 
+        Text endStarsText = GameObject.Find("StarsEarned").GetComponent<Text>();
+        endStarsText.text = "You Earned: " + starsToGive.ToString() + " Stars";
+
         end.starsUnlocked = starsToGive;
-
-
 
         //1. Load animation for switching levels
         //2. Pop-up with status screen (Time, Re-tries)
