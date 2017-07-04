@@ -287,7 +287,7 @@ public class Plate : MonoBehaviour
 
             Rend.material = CurrentMaterial; //Opdates the current Material..
 
-           // Debug.Log("Plate is now " + _light);
+            // Debug.Log("Plate is now " + _light);
 
             gm.WinningCondition(); //Checks if we can win...
         }
@@ -299,11 +299,11 @@ public class Plate : MonoBehaviour
         {
             case ActivationPlateState.Off:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateLocked; //Red-Cross Material
-              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+                                                                                                       //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             case ActivationPlateState.On:
                 go.GetComponent<Plate>().CurrentMaterial = go.GetComponent<Plate>().MatActPlateOff; //Red material..
-              //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
+                                                                                                    //  Debug.Log("Material is now: " + go.GetComponent<Plate>().CurrentMaterial);
                 break;
             default:
                 break;
@@ -318,7 +318,7 @@ public class Plate : MonoBehaviour
     /// <param name="ballCol">The ball collider</param>
     void OnTriggerEnter(Collider ballCol)
     {
-       // Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
+        // Debug.Log("I have entered a balls collision: " + this.gameObject.GetComponent<Collider>());
 
         if (ballCol == GameObject.FindGameObjectWithTag("Ball").GetComponent<Collider>())
         {
@@ -333,6 +333,7 @@ public class Plate : MonoBehaviour
                     ChangeLight();
                     gm.LockedPlatesStatus();
                 }
+
             }
 
             if (this.TypeNumb == PlateType.GoalPlate && gm.CanEnd)
@@ -342,19 +343,22 @@ public class Plate : MonoBehaviour
 
             if (this.TypeNumb == PlateType.CheckPoint)
             {
+                //KOLLIDERER MED DET SAMME, SÅ DEN ADDER DEM TIL LISTEN IGEN
                 lt.hasCheckPoint = true;
                 lt.startPos = this.transform.position;
                 CurrentMaterial = _matCheckOn;
+                Rend.material = CurrentMaterial;
 
-                ///FEJL HER MED ACTIVATION, DER KOMMER EN TOM GO PÅ LISTEN, SKAL LIGE FIXES
                 foreach (GameObject obj in gm.ActPlates)
                 {
                     if (obj.GetComponent<Plate>()._actPlaState == ActivationPlateState.On)
                     {
-                        lt.activatedPlates.Add(obj);
+                        if (obj.GetComponent<Plate>()._light == true)
+                        {
+                            lt.activatedPlates.Add(obj);
+                        }
                     }
                 }
-                //NÅR MAN KØRER SPILLET IGEN, SKAL DE PLADER DER VAR AKTIVERET BLIVE AKTIVERET IGEN
             }
 
             if (this.TypeNumb == PlateType.LeaverPlate)

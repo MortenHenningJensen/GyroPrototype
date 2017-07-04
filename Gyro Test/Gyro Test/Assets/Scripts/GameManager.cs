@@ -212,12 +212,27 @@ public class GameManager : MonoBehaviour
             WinningCondition();
         }
 
+
         LockedPlatesStatus();
+        CheckPointContiue();
 
         GameObject ball = GameObject.Find("Player");
         ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 5, lt.startPos.z);
     }
 
+
+    public void CheckPointContiue()
+    {
+        for (int i = 0; i < lt.platesToAdd.Length; i++)
+        {
+            if (lt.platesToAdd[i] != null)
+            {
+                GameObject go = GameObject.Find(lt.platesToAdd[i]);
+                go.GetComponent<Plate>().ChangeLight();
+            }
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -254,11 +269,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void LockedPlatesStatus()
     {
-        Debug.Log("Im running!");
-        Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+        //Debug.Log("Im running!");
+        //Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
         if (lockedPlates.Count == 0)
         {
-            Debug.Log("LockedPlates-list is empty!");
+            //Debug.Log("LockedPlates-list is empty!");
             switch (tog)
             {
                 case TypeOfGame.RandomActivation:
@@ -268,15 +283,15 @@ public class GameManager : MonoBehaviour
                     lockedPlates = listActivationOrder;
                     break;
             }
-            foreach (GameObject go in ActPlates)
-            {
-                Debug.Log("Plates in ActPlates: " + go);
-            }
-            foreach (GameObject go in lockedPlates)
-            {
-                Debug.Log("Plates in lockedPlates: " + go);
-            }
-            Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
+            //foreach (GameObject go in ActPlates)
+            //{
+            //    Debug.Log("Plates in ActPlates: " + go);
+            //}
+            //foreach (GameObject go in lockedPlates)
+            //{
+            //    Debug.Log("Plates in lockedPlates: " + go);
+            //}
+            //Debug.Log("Items in the LockedPlates-list: " + lockedPlates.Count);
         }
         //_rand = Random.Range(0, lockedPlates.Count); //Finds a random LockedPlate on the list.
         //Debug.Log(_rand);
@@ -285,22 +300,6 @@ public class GameManager : MonoBehaviour
             if (!_isActive)
             {
                 GetRandNumber();
-            }
-
-            //DET HER KODE BLIVER IKKE KØRT, DNO HVORFOR DEN IKKE KOMMER IND I FOREACH, MÅSKE FORDI DER KUN ER 1 TING PÅ LISTEN?
-            if (lt.hasCheckPoint)
-            {
-                Debug.Log("PREPARE TO GO IN");
-                foreach (GameObject obj in lt.activatedPlates)
-                {
-                    Debug.Log(lt.activatedPlates.Count);
-                    if (obj != null)
-                    {
-                        Debug.Log("WE GOING IN");
-                        obj.GetComponent<Plate>().ActivationPlateSetup(obj);
-                        obj.GetComponent<Plate>().ChangeLight();
-                    }
-                }
             }
 
             switch (tog)
@@ -364,6 +363,8 @@ public class GameManager : MonoBehaviour
     {
         gameEnd = GameObject.Find("EndScreen").GetComponent<Canvas>();
         gameEnd.enabled = true;
+
+        //Kør metode på GameControl?
 
         Text endStatusText = GameObject.Find("Game Over").GetComponent<Text>();
         endStatusText.text = "YOU ROLL";

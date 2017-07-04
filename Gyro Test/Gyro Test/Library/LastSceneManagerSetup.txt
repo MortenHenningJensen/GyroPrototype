@@ -1,8 +1,0 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/World 1/1-4.unity
-=======
-- path: Assets/Scenes/World 1/1-1.unity
->>>>>>> origin/Morten
-  isLoaded: 1
-  isActive: 1

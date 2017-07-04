@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameEndScreen : MonoBehaviour
 {
+    private GameControl control;
+
+    private void Start()
+    {
+        control = FindObjectOfType<GameControl>();
+    }
 
     public void BackToMenu()
     {
@@ -13,6 +19,9 @@ public class GameEndScreen : MonoBehaviour
             Time.timeScale = 1;
         }
         Destroy(GameObject.Find("GameTracker"));
+
+        //control.StartGame("LevelSelecter");
+
         SceneManager.LoadScene("Level Select");
     }
 
