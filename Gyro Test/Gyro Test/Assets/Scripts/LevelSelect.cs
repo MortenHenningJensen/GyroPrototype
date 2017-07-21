@@ -74,18 +74,22 @@ public class LevelSelect : MonoBehaviour
             //}
         }
 
-        GameObject hidden = GameObject.FindGameObjectWithTag("LevelHidden");
-        Debug.Log(hidden.transform.FindChild("Text").GetComponent<Text>().text);
-        if (PlayerPrefs.GetInt("Hidden " + hidden.transform.FindChild("Text").GetComponent<Text>().text) == 1)
+        GameObject[] hidden = GameObject.FindGameObjectsWithTag("LevelHidden");
+        foreach (GameObject hiddenobj in hidden)
         {
-            hidden.SetActive(true);
-            hidden.transform.FindChild("StarsText").GetComponent<Text>().text = PlayerPrefs.GetInt("Level " + hidden.transform.FindChild("Text").GetComponent<Text>().text).ToString() + " / 3 Stars";
+            Debug.Log(hiddenobj.transform.FindChild("Text").GetComponent<Text>().text);
+            if (PlayerPrefs.GetInt("Hidden " + hiddenobj.transform.FindChild("Text").GetComponent<Text>().text) == 1)
+            {
+                hiddenobj.SetActive(true);
+                hiddenobj.transform.FindChild("StarsText").GetComponent<Text>().text = PlayerPrefs.GetInt("Level " + hiddenobj.transform.FindChild("Text").GetComponent<Text>().text).ToString() + " / 3 Stars";
 
+            }
+            else
+            {
+                hiddenobj.SetActive(false);
+            }
         }
-        else
-        {
-            hidden.SetActive(false);
-        }
+
     }
 
     public void ResetData()
