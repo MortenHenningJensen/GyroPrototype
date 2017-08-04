@@ -96,4 +96,9 @@ public class LevelSelect : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+
+    public void BacktoMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

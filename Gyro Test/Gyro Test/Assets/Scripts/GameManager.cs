@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
         CheckPointContiue();
 
         GameObject ball = GameObject.Find("Player");
-        ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 5, lt.startPos.z);
+        ball.transform.position = new Vector3(lt.startPos.x, lt.startPos.y + 0.5f, lt.startPos.z);
     }
 
 

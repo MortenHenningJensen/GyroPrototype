@@ -40,9 +40,15 @@ public class Gyro : MonoBehaviour
 
     private LevelTracker lt;
 
+    Vector3 counterPos;
+
     // Use this for initialization
     void Start()
     {
+        if (GameObject.Find("CalibrateObject") != null)
+        {
+            counterPos = GameObject.Find("CalibrateObject").GetComponent<CalibrateCounter>().counterPos;
+        }
         lt = GameObject.Find("GameTracker").GetComponent<LevelTracker>();
         if (!Input.gyro.enabled)
         {
@@ -53,9 +59,9 @@ public class Gyro : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
             type = typetorotate.ball;
-            speed = 10f;
+            speed = 20f;
             isGrounded = true;
-            jumpForce = 200f;
+            jumpForce = 150f;
         }
         else
         {
@@ -100,7 +106,7 @@ public class Gyro : MonoBehaviour
 
                     initialOrientationY = Mathf.Clamp(initialOrientationY, minYtilt, maxYtilt);
                     initialOrientationX = Mathf.Clamp(initialOrientationX, minXtilt, maxYtilt);
-                    rb.AddForce(initialOrientationY * speed, 0.0f, -initialOrientationX * speed);
+                    rb.AddForce(counterPos + new Vector3(initialOrientationY * speed, 0.0f, -initialOrientationX * speed));
 
                     transform.forward = Vector3.Normalize(new Vector3(-Input.acceleration.x * speed, 0f, -Input.acceleration.y * speed ));
 
@@ -176,7 +182,10 @@ public class Gyro : MonoBehaviour
 
         if (collision.transform.tag == "Plate")
         {
-            isGrounded = true;
+            if (!isGrounded)
+            {
+                isGrounded = true;
+            }
         }
     }
 
